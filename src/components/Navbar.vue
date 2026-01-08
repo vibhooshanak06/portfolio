@@ -3,7 +3,7 @@
     <div class="container">
       <div class="nav-content">
         <router-link to="/" class="logo">
-          <span class="logo-text">Portfolio</span>
+          <span class="logo-text">VK</span>
         </router-link>
         
         <div class="nav-links" :class="{ 'active': mobileMenuOpen }">
