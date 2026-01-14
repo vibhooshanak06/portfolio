@@ -3,7 +3,9 @@
     <div class="container">
       <div class="nav-content">
         <router-link to="/" class="logo">
-          <span class="logo-text">VK</span>
+          <div class="logo-icon">
+            <span>VK</span>
+          </div>
         </router-link>
         
         <div class="nav-links" :class="{ 'active': mobileMenuOpen }">
@@ -11,18 +13,19 @@
           <router-link to="/about" @click="closeMobileMenu">About</router-link>
           <router-link to="/experience" @click="closeMobileMenu">Experience</router-link>
           <router-link to="/skills" @click="closeMobileMenu">Skills</router-link>
-          <router-link to="/interests" @click="closeMobileMenu">Interests</router-link>
           <router-link to="/projects" @click="closeMobileMenu">Projects</router-link>
           <router-link to="/contact" @click="closeMobileMenu">Contact</router-link>
         </div>
         
         <div class="nav-actions">
-          <button class="theme-toggle" @click="$emit('toggle-theme')">
+          <button class="theme-toggle" @click="$emit('toggle-theme')" title="Toggle theme">
             <i :class="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
           </button>
           
           <button class="mobile-menu-toggle" @click="toggleMobileMenu">
-            <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
           </button>
         </div>
       </div>
@@ -69,17 +72,14 @@ export default {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-  
-  .dark-theme & {
-    background: rgba(15, 23, 42, 0.95);
-  }
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   &.scrolled {
-    box-shadow: var(--shadow-lg);
+    background: rgba(10, 10, 15, 0.95);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -87,49 +87,75 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 20px 0;
 }
 
 .logo {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(2px);
+  }
+  
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gradient-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
   
   .logo-text {
-    font-size: 24px;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
   }
 }
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 8px;
   
   a {
     text-decoration: none;
     color: var(--text-secondary);
     font-weight: 500;
-    transition: all 0.3s ease;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     
     &:hover {
-      color: var(--primary-purple);
+      color: var(--text-primary);
+      background: var(--bg-hover);
     }
     
     &.router-link-active {
-      color: var(--primary-purple);
+      color: var(--text-primary);
+      background: var(--bg-tertiary);
       
-      &::after {
+      &::before {
         content: '';
         position: absolute;
-        bottom: -4px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--primary-purple);
-        border-radius: 1px;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 50%;
       }
     }
   }
@@ -138,56 +164,81 @@ export default {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .theme-toggle {
-  background: none;
-  border: none;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    color: var(--primary-purple);
-    background: var(--bg-secondary);
+    color: var(--primary-light);
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+    transform: rotate(15deg);
   }
 }
 
 .mobile-menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 18px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   transition: all 0.3s ease;
   
+  .hamburger-line {
+    width: 18px;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
   &:hover {
-    color: var(--primary-purple);
-    background: var(--bg-secondary);
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+    
+    .hamburger-line {
+      background: var(--primary-light);
+    }
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 76px;
     left: 0;
     right: 0;
-    background: var(--bg-primary);
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 24px;
     border-bottom: 1px solid var(--border-color);
-    transform: translateY(-100%);
+    transform: translateY(-120%);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 4px;
     
     &.active {
       transform: translateY(0);
@@ -196,17 +247,22 @@ export default {
     }
     
     a {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 14px 16px;
+      width: 100%;
       
-      &:last-child {
-        border-bottom: none;
+      &.router-link-active::before {
+        left: 16px;
+        transform: none;
       }
     }
   }
   
   .mobile-menu-toggle {
-    display: block;
+    display: flex;
+  }
+  
+  .logo-text {
+    display: none;
   }
 }
 </style>

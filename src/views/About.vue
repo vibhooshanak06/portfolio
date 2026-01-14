@@ -25,7 +25,7 @@
             <h2 class="section-title">My Story</h2>
             <div class="story-paragraphs">
               <p>
-                Hello! I'm John Doe, a passionate full-stack developer based in New York. 
+                Hello! I'm Vibhooshana Kannan, aspiring full-stack developer based in Tamilnadu. 
                 My journey into the world of programming began during my college years when 
                 I discovered the power of code to bring ideas to life.
               </p>

@@ -1,34 +1,61 @@
-// Global Variables
+// Nivora-inspired Design System
 :root {
-    // Light Theme Colors
-    --primary-purple: #8B5CF6;
-    --secondary-purple: #A78BFA;
-    --accent-purple: #C4B5FD;
-    --dark-purple: #6D28D9;
-    --light-purple: #EDE9FE;
+    // Primary Colors - Nivora style
+    --primary: #6366F1;
+    --primary-light: #818CF8;
+    --primary-dark: #4F46E5;
+    --accent: #10B981;
+    --accent-light: #34D399;
 
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --text-primary: #1F2937;
-    --text-secondary: #6B7280;
-    --text-accent: #8B5CF6;
-    --border-color: #E5E7EB;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    // Background Colors - Dark theme default
+    --bg-primary: #0A0A0F;
+    --bg-secondary: #111118;
+    --bg-tertiary: #1A1A24;
+    --bg-card: #16161F;
+    --bg-hover: #1E1E2A;
+
+    // Text Colors
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --text-tertiary: #71717A;
+    --text-muted: #52525B;
+
+    // Border & Divider
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.15);
+
+    // Shadows
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+
+    // Gradients
+    --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+    --gradient-accent: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+    --gradient-bg: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
 }
 
-// Dark Theme Colors
-.dark-theme {
-    --bg-primary: #0F172A;
-    --bg-secondary: #1E293B;
-    --bg-card: #334155;
-    --text-primary: #F1F5F9;
-    --text-secondary: #CBD5E1;
-    --text-accent: #A78BFA;
-    --border-color: #475569;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+// Light Theme (optional)
+.light-theme {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F9FAFB;
+    --bg-tertiary: #F3F4F6;
+    --bg-card: #FFFFFF;
+    --bg-hover: #F3F4F6;
+
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-tertiary: #6B7280;
+    --text-muted: #9CA3AF;
+
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-hover: rgba(0, 0, 0, 0.15);
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.2);
 }
 
 // Global Styles
@@ -39,11 +66,14 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 // Smooth scrolling
@@ -51,9 +81,9 @@ html {
     scroll-behavior: smooth;
 }
 
-// Custom scrollbar
+// Custom scrollbar - Nivora style
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -61,12 +91,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary-purple);
-    border-radius: 4px;
+    background: var(--primary);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--dark-purple);
+    background: var(--primary-light);
 }
 
 // Animations
@@ -151,53 +181,95 @@ html {
     animation: float 3s ease-in-out infinite;
 }
 
-// Button Styles
+// Button Styles - Nivora inspired
 .btn {
-    padding: 12px 24px;
+    padding: 14px 32px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 500;
+    font-size: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    background: var(--gradient-primary);
     color: white;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5);
+    }
+
+    &:active {
+        transform: translateY(0);
     }
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid var(--primary-purple);
-    color: var(--primary-purple);
+    border: 1.5px solid var(--border-hover);
+    color: var(--text-primary);
+    backdrop-filter: blur(10px);
 
     &:hover {
-        background: var(--primary-purple);
-        color: white;
-        transform: translateY(-2px);
+        background: var(--bg-hover);
+        border-color: var(--primary);
+        color: var(--primary-light);
     }
 }
 
-// Card Styles
-.card {
-    background: var(--bg-card);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: var(--shadow);
+.btn-ghost {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
 
     &:hover {
-        transform: translateY(-5px);
+        background: var(--bg-hover);
+        border-color: var(--border-hover);
+    }
+}
+
+// Card Styles - Nivora inspired
+.card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-hover);
         box-shadow: var(--shadow-lg);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        padding: 1px;
+        background: linear-gradient(135deg, transparent, rgba(99, 102, 241, 0.1));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+
+    &:hover::before {
+        opacity: 1;
     }
 }
 

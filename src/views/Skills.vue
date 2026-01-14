@@ -1,60 +1,106 @@
 <template>
   <div class="skills">
     <div class="container">
-      <!-- Hero Section -->
+      <!-- Hero Section with Two Columns -->
       <section class="skills-hero section">
-        <div class="hero-content fade-in-up">
-          <h1 class="page-title">Skills & Technologies</h1>
-          <p class="page-subtitle">
-            The tools and technologies I use to bring ideas to life
-          </p>
-        </div>
-      </section>
-
-      <!-- Technical Skills -->
-      <section class="technical-skills section">
-        <h2 class="section-title fade-in-up">Technical Skills</h2>
-        <div class="skills-categories">
-          <div class="skill-category fade-in-up" v-for="category in skillCategories" :key="category.id">
-            <div class="category-header">
-              <div class="category-icon">
-                <i :class="category.icon"></i>
+        <div class="hero-grid">
+          <!-- Left: Description -->
+          <div class="hero-left">
+            <h1 class="page-title">Skills & Technologies</h1>
+            <p class="page-description">
+              I'm a full-stack developer with expertise in modern web technologies. 
+              My skill set spans across frontend frameworks, backend development, 
+              databases, and cloud infrastructure.
+            </p>
+            <p class="page-description">
+              I believe in continuous learning and staying updated with the latest 
+              industry trends. My approach combines technical excellence with creative 
+              problem-solving to deliver exceptional digital experiences.
+            </p>
+            
+          </div>
+          
+          <!-- Right: Orbital Animation -->
+          <div class="hero-right">
+            <div class="orbital-container">
+              <div class="orbital-center">
+                <div class="center-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+          
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring pulse-ring-2"></div>
               </div>
-              <h3 class="category-title">{{ category.title }}</h3>
-            </div>
-            <div class="skills-grid">
-              <div class="skill-item" v-for="skill in category.skills" :key="skill.name">
-                <div class="skill-icon">
-                  <i :class="skill.icon"></i>
+              
+              <div 
+                class="orbital-item" 
+                v-for="(tool, index) in orbitalTools" 
+                :key="tool.name"
+                :style="{ 
+                  '--orbit-angle': `${(-180 / orbitalTools.length) * index}deg`,
+                  '--item-index': index
+                }"
+              >
+                <div class="orbital-icon">
+                  <i :class="tool.icon"></i>
                 </div>
-                <div class="skill-info">
-                  <span class="skill-name">{{ skill.name }}</span>
-                  <div class="skill-level">
-                    <div class="level-bar">
-                      <div class="level-fill" :style="{ width: skill.level + '%' }"></div>
-                    </div>
-                    <span class="level-text">{{ skill.level }}%</span>
-                  </div>
-                </div>
+                <div class="orbital-tooltip">{{ tool.name }}</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Tools & Software -->
-      <section class="tools-section section">
-        <h2 class="section-title fade-in-up">Tools & Software</h2>
-        <div class="tools-grid">
-          <div class="tool-card fade-in-up" v-for="tool in tools" :key="tool.id">
-            <div class="tool-icon">
-              <i :class="tool.icon"></i>
+      <!-- Compact Tech Stack - Single View -->
+      <section class="tech-stack-compact section">
+        <div class="section-header">
+          <h2 class="section-title">Tech Stack Overview</h2>
+          <p class="section-subtitle">Technologies I work with daily</p>
+        </div>
+        
+        <div class="tech-stack-grid">
+          <div 
+            class="tech-stack-item" 
+            v-for="category in techStack" 
+            :key="category.name"
+          >
+            <div class="tech-header">
+              <div class="tech-icon">
+                <i :class="category.icon"></i>
+              </div>
+              <h3 class="tech-category-name">{{ category.name }}</h3>
             </div>
-            <h3 class="tool-name">{{ tool.name }}</h3>
-            <p class="tool-description">{{ tool.description }}</p>
-            <div class="proficiency-badge" :class="tool.proficiency.toLowerCase()">
-              {{ tool.proficiency }}
+            <div class="tech-list">
+              <span 
+                class="tech-tag" 
+                v-for="tech in category.items" 
+                :key="tech"
+              >
+                {{ tech }}
+              </span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="certifications section">
+        <div class="section-header">
+          <h2 class="section-title">Certifications</h2>
+        </div>
+        
+        <div class="cert-grid">
+          <div 
+            class="cert-card" 
+            v-for="cert in certifications" 
+            :key="cert.name"
+          >
+            <div class="cert-badge">
+              <i :class="cert.icon"></i>
+            </div>
+            <h4 class="cert-name">{{ cert.name }}</h4>
+            <p class="cert-issuer">{{ cert.issuer }}</p>
+            <span class="cert-year">{{ cert.year }}</span>
           </div>
         </div>
       </section>
@@ -67,320 +113,629 @@ export default {
   name: 'Skills',
   data() {
     return {
-      skillCategories: [
+      orbitalTools: [
+        { name: 'Vue.js', icon: 'fab fa-vuejs' },
+        { name: 'React', icon: 'fab fa-react' },
+        { name: 'Node.js', icon: 'fab fa-node-js' },
+        { name: 'Python', icon: 'fab fa-python' },
+        { name: 'MongoDB', icon: 'fas fa-database' },
+        { name: 'Docker', icon: 'fab fa-docker' },
+        { name: 'AWS', icon: 'fab fa-aws' },
+        { name: 'Git', icon: 'fab fa-git-alt' },
+        { name: 'Figma', icon: 'fab fa-figma' },
+        { name: 'TypeScript', icon: 'fas fa-code' },
+        { name: 'PostgreSQL', icon: 'fas fa-database' },
+        { name: 'JavaScript', icon: 'fab fa-js-square' }
+      ],
+      techStack: [
         {
-          id: 1,
-          title: 'Frontend Development',
-          icon: 'fas fa-palette',
-          skills: [
-            { name: 'Vue.js', icon: 'fab fa-vuejs', level: 95 },
-            { name: 'React', icon: 'fab fa-react', level: 85 },
-            { name: 'JavaScript', icon: 'fab fa-js-square', level: 90 },
-            { name: 'TypeScript', icon: 'fas fa-code', level: 80 },
-            { name: 'HTML5', icon: 'fab fa-html5', level: 95 },
-            { name: 'CSS3/SCSS', icon: 'fab fa-css3-alt', level: 90 }
-          ]
+          name: 'Frontend',
+          icon: 'fas fa-laptop-code',
+          items: ['HTML5', 'CSS3', 'SCSS', 'Tailwind', 'Bootstrap', 'Material-UI', 'Ant Design', 'Responsive Design']
         },
         {
-          id: 2,
-          title: 'Backend Development',
+          name: 'Backend',
           icon: 'fas fa-server',
-          skills: [
-            { name: 'Node.js', icon: 'fab fa-node-js', level: 85 },
-            { name: 'Express.js', icon: 'fas fa-code', level: 80 },
-            { name: 'Python', icon: 'fab fa-python', level: 75 },
-            { name: 'PHP', icon: 'fab fa-php', level: 70 },
-            { name: 'REST APIs', icon: 'fas fa-exchange-alt', level: 90 },
-            { name: 'GraphQL', icon: 'fas fa-project-diagram', level: 65 }
-          ]
+          items: ['Express.js', 'Nest.js', 'GraphQL', 'REST API', 'WebSocket', 'Microservices', 'JWT', 'OAuth']
         },
         {
-          id: 3,
-          title: 'Database & Cloud',
+          name: 'Database',
           icon: 'fas fa-database',
-          skills: [
-            { name: 'MongoDB', icon: 'fas fa-leaf', level: 85 },
-            { name: 'PostgreSQL', icon: 'fas fa-database', level: 80 },
-            { name: 'MySQL', icon: 'fas fa-database', level: 75 },
-            { name: 'AWS', icon: 'fab fa-aws', level: 70 },
-            { name: 'Docker', icon: 'fab fa-docker', level: 65 },
-            { name: 'Firebase', icon: 'fas fa-fire', level: 75 }
-          ]
+          items: ['MySQL', 'Redis', 'Firebase', 'Supabase', 'Prisma', 'TypeORM', 'Mongoose', 'SQL']
+        },
+        {
+          name: 'DevOps & Tools',
+          icon: 'fas fa-cloud',
+          items: ['CI/CD', 'Jenkins', 'Nginx', 'PM2', 'Vercel', 'Netlify', 'GitHub Actions', 'VS Code']
         }
       ],
-      tools: [
-        {
-          id: 1,
-          name: 'VS Code',
-          icon: 'fas fa-code',
-          description: 'Primary code editor with extensive customization',
-          proficiency: 'Expert'
-        },
-        {
-          id: 2,
-          name: 'Git & GitHub',
-          icon: 'fab fa-git-alt',
-          description: 'Version control and collaborative development',
-          proficiency: 'Expert'
-        },
-        {
-          id: 3,
-          name: 'Figma',
-          icon: 'fab fa-figma',
-          description: 'UI/UX design and prototyping',
-          proficiency: 'Advanced'
-        },
-        {
-          id: 4,
-          name: 'Postman',
-          icon: 'fas fa-paper-plane',
-          description: 'API testing and development',
-          proficiency: 'Advanced'
-        }
+      certifications: [
+        { name: 'AWS Certified Developer', issuer: 'Amazon Web Services', year: '2024', icon: 'fab fa-aws' },
+        { name: 'Vue.js Certification', issuer: 'Vue School', year: '2023', icon: 'fab fa-vuejs' },
+        { name: 'Full Stack Development', issuer: 'freeCodeCamp', year: '2023', icon: 'fas fa-certificate' },
+        { name: 'JavaScript Algorithms', issuer: 'Coursera', year: '2022', icon: 'fab fa-js-square' }
       ]
     }
   }
 }
 </script>
+
 <style scoped lang="scss">
 .skills {
-  padding-top: 80px;
+  padding-top: 100px;
 }
 
+// Hero Section with Two Columns
 .skills-hero {
-  text-align: center;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+// Left Side - Description
+.hero-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
   
-  .page-title {
-    font-size: 3rem;
+  .badge-icon {
+    font-size: 16px;
+  }
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
+  
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  margin-bottom: 20px;
+}
+
+.stats-mini {
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.stat-mini {
+  .stat-number {
+    font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 24px;
+    line-height: 1;
+    margin-bottom: 8px;
   }
   
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
   }
 }
 
-.technical-skills {
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
-  }
+// Right Side - Orbital Animation
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.orbital-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.orbital-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
+  z-index: 10;
+  animation: float 3s ease-in-out infinite;
+}
+
+.center-icon {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.center-text {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  animation: pulse 2s ease-out infinite;
+  opacity: 0;
+}
+
+.pulse-ring-2 {
+  animation-delay: 1s;
+}
+
+.orbital-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
+  transform-origin: 35px 35px;
+  animation: orbit 20s linear infinite;
+  animation-delay: calc(var(--item-index) * -1.67s);
+}
+
+.orbital-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: counterRotate 20s linear infinite;
+  animation-delay: calc(var(--item-index) * -1.67s);
   
-  .skills-categories {
-    display: grid;
-    gap: 40px;
+  &:hover {
+    background: var(--gradient-primary);
+    border-color: var(--primary);
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
     
-    .skill-category {
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      
-      .category-header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 32px;
-        
-        .category-icon {
-          width: 60px;
-          height: 60px;
-          background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-          border-radius: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 24px;
-          color: white;
-        }
-        
-        .category-title {
-          font-size: 1.75rem;
-          font-weight: 600;
-          color: var(--text-primary);
-        }
-      }
-      
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-        
-        .skill-item {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 16px;
-          background: var(--bg-secondary);
-          border-radius: 12px;
-          transition: all 0.3s ease;
-          
-          &:hover {
-            transform: translateX(5px);
-          }
-          
-          .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-purple);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: white;
-            flex-shrink: 0;
-          }
-          
-          .skill-info {
-            flex: 1;
-            
-            .skill-name {
-              font-weight: 600;
-              color: var(--text-primary);
-              display: block;
-              margin-bottom: 8px;
-            }
-            
-            .skill-level {
-              display: flex;
-              align-items: center;
-              gap: 12px;
-              
-              .level-bar {
-                flex: 1;
-                height: 6px;
-                background: var(--border-color);
-                border-radius: 3px;
-                overflow: hidden;
-                
-                .level-fill {
-                  height: 100%;
-                  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-                  border-radius: 3px;
-                  transition: width 1s ease-in-out;
-                }
-              }
-              
-              .level-text {
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--primary-purple);
-                min-width: 35px;
-              }
-            }
-          }
-        }
-      }
+    & + .orbital-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-10px);
     }
   }
 }
 
-.tools-section {
-  background: var(--bg-secondary);
-  border-radius: 20px;
-  padding: 60px 40px;
+.orbital-tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+// Compact Tech Stack - Single View
+.tech-stack-compact {
+  padding: 80px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-tertiary);
+}
+
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-stack-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
   
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
     
-    .tool-card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 32px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      position: relative;
+    .tech-icon {
+      transform: scale(1.1);
+      background: var(--gradient-primary);
       
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-      }
-      
-      .tool-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
+      i {
         color: white;
-        margin: 0 auto 24px;
-      }
-      
-      .tool-name {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 12px;
-      }
-      
-      .tool-description {
-        color: var(--text-secondary);
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-      
-      .proficiency-badge {
-        display: inline-block;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        
-        &.expert {
-          background: linear-gradient(135deg, #10B981, #059669);
-          color: white;
-        }
-        
-        &.advanced {
-          background: linear-gradient(135deg, #3B82F6, #1D4ED8);
-          color: white;
-        }
-        
-        &.intermediate {
-          background: linear-gradient(135deg, #F59E0B, #D97706);
-          color: white;
-        }
       }
     }
   }
 }
 
-@media (max-width: 768px) {
-  .skills-categories .skill-category .skills-grid {
+.tech-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tech-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--bg-tertiary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  
+  i {
+    font-size: 20px;
+    color: var(--primary);
+    transition: color 0.3s ease;
+  }
+}
+
+.tech-category-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  padding: 6px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+}
+
+// Certifications
+.certifications {
+  background: var(--bg-secondary);
+  border-radius: 32px;
+  padding: 60px 40px;
+  margin-bottom: 60px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2);
+    
+    .cert-badge {
+      transform: scale(1.1);
+      background: var(--gradient-accent);
+      
+      i {
+        color: white;
+      }
+    }
+  }
+}
+
+.cert-badge {
+  width: 64px;
+  height: 64px;
+  background: var(--bg-tertiary);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  transition: all 0.3s ease;
+  
+  i {
+    font-size: 28px;
+    color: var(--accent);
+    transition: color 0.3s ease;
+  }
+}
+
+.cert-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.cert-issuer {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+
+.cert-year {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+// Animations
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(215px);
+  }
+  to {
+    transform: rotate(360deg) translateX(215px);
+  }
+}
+
+@keyframes counterRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .hero-grid {
+    gap: 60px;
+  }
+  
+  .orbital-container {
+    width: 450px;
+    height: 450px;
+  }
+  
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(190px);
+    }
+    to {
+      transform: rotate(360deg) translateX(190px);
+    }
+  }
+}
+
+@media (max-width: 968px) {
+  .skills {
+    padding-top: 80px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .hero-left {
+    text-align: center;
+  }
+  
+  .stats-mini {
+    justify-content: center;
+  }
+  
+  .orbital-container {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .tech-stack-grid {
     grid-template-columns: 1fr;
   }
   
-  .tools-section {
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(165px);
+    }
+    to {
+      transform: rotate(360deg) translateX(165px);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .orbital-container {
+    width: 100%;
+    max-width: 350px;
+    height: 350px;
+  }
+  
+  .orbital-center {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .center-icon {
+    font-size: 32px;
+  }
+  
+  .center-text {
+    font-size: 0.75rem;
+  }
+  
+  .orbital-item {
+    width: 56px;
+    height: 56px;
+    margin: -28px 0 0 -28px;
+  }
+  
+  .orbital-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+  
+  .stats-mini {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .certifications {
     padding: 40px 20px;
+  }
+  
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(147px);
+    }
+    to {
+      transform: rotate(360deg) translateX(147px);
+    }
   }
 }
 </style>
