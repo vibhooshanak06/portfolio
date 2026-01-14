@@ -1,146 +1,150 @@
-# Vue.js Portfolio
+# Portfolio Website - Nivora Inspired Design
 
-A stunning, responsive portfolio website built with Vue.js featuring a beautiful purple theme, dark/light mode toggle, and smooth animations.
+A modern, elegant portfolio website inspired by Nivora's design aesthetic, featuring a clean dark theme, smooth animations, and contemporary UI patterns.
 
-## Features
+## 🎨 Design Features
 
-- 🎨 **Beautiful Purple Theme** - Elegant gradient design with purple color scheme
-- 🌙 **Dark/Light Mode** - Toggle between themes with smooth transitions
-- 📱 **Fully Responsive** - Works perfectly on all devices
-- ✨ **Smooth Animations** - CSS animations and transitions throughout
-- 🚀 **Modern Tech Stack** - Vue.js 3, Vue Router, SCSS
-- 📄 **Multiple Pages** - Home, About, Experience, Skills, Interests, Projects, Contact
-- 🎯 **Perfect UI/UX** - Clean, modern, and user-friendly interface
+- **Dark-First Design**: Beautiful dark theme (#0A0A0F) with subtle gradients
+- **Modern Typography**: Inter font family for clean, professional look
+- **Smooth Animations**: Subtle transitions and hover effects throughout
+- **Glassmorphism**: Frosted glass effects on navigation and cards
+- **Responsive Layout**: Fully responsive across all devices
+- **Clean UI Components**: Card-based layouts with elegant borders
 
-## Pages
+## 🎯 Color Scheme (Nivora Style)
 
-1. **Home** - Hero section with introduction and featured projects
-2. **About** - Personal story, values, timeline, and fun facts
-3. **Experience** - Work experience, education, certifications, and skills progress
-4. **Skills** - Technical skills, tools, and proficiency levels
-5. **Interests** - Hobbies, interests, and activities outside of coding
-6. **Projects** - Academic and personal projects showcase
-7. **Contact** - Contact form and social links
+- **Primary**: Indigo (#6366F1)
+- **Accent**: Emerald (#10B981)
+- **Background**: Deep Dark (#0A0A0F)
+- **Secondary BG**: (#111118)
+- **Card BG**: (#16161F)
+- **Text Primary**: White (#FFFFFF)
+- **Text Secondary**: Gray (#A1A1AA)
 
-## Tech Stack
+## 📦 Tech Stack
 
-- **Frontend**: Vue.js 3
-- **Routing**: Vue Router 4
-- **Styling**: SCSS with CSS custom properties
-- **Icons**: Font Awesome
-- **Fonts**: Google Fonts (Poppins)
+- Vue.js 3
+- Vue Router 4
+- SCSS for styling
+- Font Awesome 6 icons
+- Inter font family (Google Fonts)
 
-## Installation
+## 🚀 Getting Started
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd portfolio
-   ```
+### Installation
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+# Install dependencies
+npm install
 
-3. **Start development server**
-   ```bash
-   npm run serve
-   # or
-   npm run dev
-   ```
+# Run development server
+npm run serve
 
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+# Build for production
+npm run build
+```
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Navbar.vue          # Navigation component
-│   └── Footer.vue          # Footer component
+│   ├── Navbar.vue          # Modern navigation with glassmorphism
+│   └── Footer.vue          # Clean footer with social links
 ├── views/
-│   ├── Home.vue           # Home page
-│   ├── About.vue          # About page
-│   ├── Experience.vue     # Experience page
-│   ├── Skills.vue         # Skills page
-│   ├── Interests.vue      # Interests page
-│   ├── Projects.vue       # Projects page
-│   └── Contact.vue        # Contact page
+│   ├── Home.vue           # Hero section with featured work
+│   ├── About.vue          # About page with timeline
+│   ├── Experience.vue     # Work experience
+│   ├── Skills.vue         # Technical skills showcase
+│   ├── Projects.vue       # Project portfolio
+│   └── Contact.vue        # Contact form
 ├── router/
 │   └── index.js           # Vue Router configuration
 ├── styles/
-│   └── global.scss        # Global styles and variables
+│   └── global.scss        # Global styles with Nivora design system
 ├── App.vue                # Main app component
 └── main.js               # App entry point
 ```
 
-## Customization
+## ✨ Key Features
 
-### Colors
-The color scheme is defined in `src/styles/global.scss` using CSS custom properties:
+### Navigation
+- Fixed navbar with blur backdrop
+- Smooth scroll behavior
+- Active route indicators
+- Mobile-responsive hamburger menu
+
+### Home Page
+- Hero section with gradient background
+- Availability badge with pulse animation
+- Stats section with gradient numbers
+- Featured work showcase
+- Skills overview grid
+
+### Components
+- Hover effects with smooth transitions
+- Card components with border animations
+- Button variants (primary, outline, ghost)
+- Responsive grid layouts
+
+### Animations
+- Fade in up animations
+- Scroll indicators
+- Hover transforms
+- Smooth color transitions
+
+## 🎨 Customization
+
+### Update Colors
+Edit `src/styles/global.scss`:
 
 ```scss
 :root {
-  --primary-purple: #8B5CF6;
-  --secondary-purple: #A78BFA;
-  --accent-purple: #C4B5FD;
-  --dark-purple: #6D28D9;
-  --light-purple: #EDE9FE;
-  // ... other colors
+  --primary: #6366F1;
+  --accent: #10B981;
+  --bg-primary: #0A0A0F;
+  // ... customize other colors
 }
 ```
 
-### Content
-Update the content in each Vue component to match your personal information:
+### Update Content
+- **Home.vue**: Update hero text, featured projects, skills
+- **About.vue**: Modify personal story, values, timeline
+- **Projects.vue**: Add your projects
+- **Skills.vue**: Update technical skills
+- **Contact.vue**: Update contact information
 
-- **Personal Info**: Update name, title, description in `Home.vue`
-- **About**: Modify story, values, timeline in `About.vue`
-- **Experience**: Add your work experience and education in `Experience.vue`
-- **Skills**: Update your technical skills and tools in `Skills.vue`
-- **Projects**: Add your projects in `Projects.vue`
-- **Contact**: Update contact information in `Contact.vue`
+### Typography
+The portfolio uses Inter font. To change:
+1. Update Google Fonts link in `public/index.html`
+2. Update font-family in `src/styles/global.scss`
 
-### Animations
-The portfolio includes several CSS animations:
-- `fadeInUp`, `fadeInLeft`, `fadeInRight` - Entrance animations
-- `float` - Floating animation for elements
-- `pulse` - Pulsing effect
-- Hover effects on cards and buttons
+## 📱 Responsive Design
 
-## Browser Support
+- Desktop: Full layout with multi-column grids
+- Tablet (< 968px): Adjusted layouts
+- Mobile (< 640px): Single column, stacked elements
+
+## 🌐 Browser Support
 
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
 
-## Performance
+## 🎯 Design Inspiration
 
-- Optimized images and assets
-- Efficient CSS with custom properties
-- Smooth animations with CSS transforms
-- Responsive design with mobile-first approach
+This portfolio is inspired by [Nivora](https://nivora.framer.website/), featuring:
+- Minimalist dark aesthetic
+- Subtle gradient accents
+- Clean typography
+- Smooth micro-interactions
+- Professional spacing and layout
 
-## License
+## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Support
-
-If you like this portfolio template, please give it a ⭐ on GitHub!
+This project is open source and available under the MIT License.
 
 ---
 
-**Made with ❤️ using Vue.js**
+**Built with ❤️ using Vue.js** | Inspired by Nivora Design

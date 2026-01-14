@@ -18,12 +18,12 @@ export default {
   },
   data() {
     return {
-      isDarkMode: false
+      isDarkMode: true
     }
   },
   mounted() {
     const savedTheme = localStorage.getItem('theme')
-    this.isDarkMode = savedTheme === 'dark'
+    this.isDarkMode = savedTheme ? savedTheme === 'dark' : true
   },
   methods: {
     toggleTheme() {
