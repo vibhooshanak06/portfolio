@@ -1,6 +1,5 @@
-# Portfolio Website - Nivora Inspired Design
-
-A modern, elegant portfolio website inspired by Nivora's design aesthetic, featuring a clean dark theme, smooth animations, and contemporary UI patterns.
+# Portfolio Website
+A modern, elegant portfolio website featuring a clean dark theme, smooth animations, and contemporary UI patterns.
 
 ## 🎨 Design Features
 
@@ -148,3 +147,4 @@ This project is open source and available under the MIT License.
 ---
 
 **Built with ❤️ using Vue.js** | Inspired by Nivora Design
+
