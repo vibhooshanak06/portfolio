@@ -30,78 +30,9 @@
               <span>Get In Touch</span>
             </router-link>
           </div>
-          
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="stat-value">50+</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <div class="stat-value">3+</div>
-              <div class="stat-label">Years Exp</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <div class="stat-value">100+</div>
-              <div class="stat-label">Clients</div>
-            </div>
-          </div>
         </div>
       </div>
       
-      <div class="scroll-indicator">
-        <div class="scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- Featured Work -->
-    <section class="featured-work section">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Portfolio</div>
-          <h2 class="section-title">Featured Work</h2>
-          <p class="section-description">
-            A selection of projects that showcase my expertise in web development
-          </p>
-        </div>
-        
-        <div class="projects-grid">
-          <div class="project-card" v-for="project in featuredProjects" :key="project.id">
-            <div class="project-image">
-              <div class="project-icon">
-                <i :class="project.icon"></i>
-              </div>
-              <div class="project-overlay">
-                <span class="view-project">View Project →</span>
-              </div>
-            </div>
-            
-            <div class="project-info">
-              <div class="project-meta">
-                <span class="project-category">{{ project.category }}</span>
-                <span class="project-year">{{ project.year }}</span>
-              </div>
-              
-              <h3 class="project-title">{{ project.title }}</h3>
-              <p class="project-description">{{ project.description }}</p>
-              
-              <div class="project-tech">
-                <span v-for="tech in project.technologies" :key="tech" class="tech-badge">
-                  {{ tech }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="section-cta">
-          <router-link to="/projects" class="btn btn-ghost">
-            <span>View All Projects</span>
-            <i class="fas fa-arrow-right"></i>
-          </router-link>
-        </div>
-      </div>
     </section>
 
     <!-- Skills Overview -->
@@ -141,35 +72,6 @@ export default {
   name: 'Home',
   data() {
     return {
-      featuredProjects: [
-        {
-          id: 1,
-          title: 'E-Commerce Platform',
-          description: 'Modern e-commerce solution with seamless checkout and inventory management.',
-          category: 'Web App',
-          year: '2024',
-          technologies: ['Vue.js', 'Node.js', 'MongoDB'],
-          icon: 'fas fa-shopping-cart'
-        },
-        {
-          id: 2,
-          title: 'Task Management System',
-          description: 'Collaborative workspace with real-time updates and team features.',
-          category: 'SaaS',
-          year: '2024',
-          technologies: ['React', 'Firebase', 'Tailwind'],
-          icon: 'fas fa-tasks'
-        },
-        {
-          id: 3,
-          title: 'Analytics Dashboard',
-          description: 'Data visualization platform with interactive charts and insights.',
-          category: 'Dashboard',
-          year: '2023',
-          technologies: ['Vue.js', 'D3.js', 'Express'],
-          icon: 'fas fa-chart-line'
-        }
-      ],
       topSkills: [
         {
           name: 'Frontend Development',
@@ -292,66 +194,7 @@ export default {
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 60px;
   animation: fadeInUp 0.6s ease-out 0.4s backwards;
-}
-
-.hero-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  padding: 32px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  animation: fadeInUp 0.6s ease-out 0.5s backwards;
-  
-  .stat {
-    text-align: center;
-    
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    
-    .stat-label {
-      font-size: 0.875rem;
-      color: var(--text-tertiary);
-      font-weight: 500;
-    }
-  }
-  
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border-color);
-  }
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  .scroll-line {
-    width: 1px;
-    height: 60px;
-    background: linear-gradient(to bottom, var(--primary), transparent);
-    animation: scrollDown 2s infinite;
-  }
-}
-
-// Featured Work Section
-.featured-work {
-  background: var(--bg-secondary);
 }
 
 .section {
@@ -509,10 +352,6 @@ export default {
   }
 }
 
-.section-cta {
-  text-align: center;
-}
-
 // Skills Overview Section
 .skills-overview {
   background: var(--bg-primary);
@@ -604,39 +443,14 @@ export default {
   }
 }
 
-@keyframes scrollDown {
-  0%, 100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-}
-
 // Responsive
 @media (max-width: 968px) {
   .hero {
     padding: 100px 0 60px;
   }
   
-  .hero-stats {
-    flex-direction: column;
-    gap: 24px;
-    
-    .stat-divider {
-      width: 100%;
-      height: 1px;
-    }
-  }
-  
   .section {
     padding: 80px 0;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
   }
   
   .skills-content {
