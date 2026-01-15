@@ -22,13 +22,13 @@
           </p>
           
           <div class="hero-actions">
-            <router-link to="/projects" class="btn btn-primary">
+            <a href="#projects" @click="scrollToSection('projects')" class="btn btn-primary">
               <span>View My Work</span>
               <i class="fas fa-arrow-right"></i>
-            </router-link>
-            <router-link to="/contact" class="btn btn-outline">
+            </a>
+            <a href="#contact" @click="scrollToSection('contact')" class="btn btn-outline">
               <span>Get In Touch</span>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -46,10 +46,10 @@
               I specialize in building modern web applications with cutting-edge 
               technologies, focusing on performance, scalability, and user experience.
             </p>
-            <router-link to="/skills" class="btn btn-outline">
+            <a href="#skills" @click="scrollToSection('skills')" class="btn btn-outline">
               <span>Explore Skills</span>
               <i class="fas fa-arrow-right"></i>
-            </router-link>
+            </a>
           </div>
           
           <div class="skills-grid">
@@ -94,6 +94,21 @@ export default {
           icon: 'fas fa-cloud'
         }
       ]
+    }
+  },
+  methods: {
+    scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const offset = 80
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - offset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
     }
   }
 }
