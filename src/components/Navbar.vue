@@ -2,19 +2,19 @@
   <nav class="navbar" :class="{ 'scrolled': isScrolled }">
     <div class="container">
       <div class="nav-content">
-        <router-link to="/" class="logo">
+        <a href="#home" @click="scrollToSection('home')" class="logo">
           <div class="logo-icon">
             <span>VK</span>
           </div>
-        </router-link>
+        </a>
         
         <div class="nav-links" :class="{ 'active': mobileMenuOpen }">
-          <router-link to="/" @click="closeMobileMenu">Home</router-link>
-          <router-link to="/about" @click="closeMobileMenu">About</router-link>
-          <router-link to="/experience" @click="closeMobileMenu">Experience</router-link>
-          <router-link to="/skills" @click="closeMobileMenu">Skills</router-link>
-          <router-link to="/projects" @click="closeMobileMenu">Projects</router-link>
-          <router-link to="/contact" @click="closeMobileMenu">Contact</router-link>
+          <a href="#home" @click="scrollToSection('home')" :class="{ 'active': activeSection === 'home' }">Home</a>
+          <a href="#about" @click="scrollToSection('about')" :class="{ 'active': activeSection === 'about' }">About</a>
+          <a href="#experience" @click="scrollToSection('experience')" :class="{ 'active': activeSection === 'experience' }">Experience</a>
+          <a href="#skills" @click="scrollToSection('skills')" :class="{ 'active': activeSection === 'skills' }">Skills</a>
+          <a href="#projects" @click="scrollToSection('projects')" :class="{ 'active': activeSection === 'projects' }">Projects</a>
+          <a href="#contact" @click="scrollToSection('contact')" :class="{ 'active': activeSection === 'contact' }">Contact</a>
         </div>
         
         <div class="nav-actions">
@@ -42,14 +42,18 @@ export default {
   data() {
     return {
       isScrolled: false,
-      mobileMenuOpen: false
+      mobileMenuOpen: false,
+      activeSection: 'home'
     }
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.updateActiveSection)
+    this.updateActiveSection()
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.updateActiveSection)
   },
   methods: {
     handleScroll() {
@@ -60,6 +64,32 @@ export default {
     },
     closeMobileMenu() {
       this.mobileMenuOpen = false
+    },
+    scrollToSection(sectionId) {
+      this.closeMobileMenu()
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const offset = 80
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - offset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    },
+    updateActiveSection() {
+      const sections = ['home', 'about', 'experience', 'skills', 'interests', 'projects', 'contact']
+      const scrollPosition = window.scrollY + 150
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i])
+        if (section && section.offsetTop <= scrollPosition) {
+          this.activeSection = sections[i]
+          break
+        }
+      }
     }
   }
 }
@@ -142,7 +172,7 @@ export default {
       background: var(--bg-hover);
     }
     
-    &.router-link-active {
+    &.active {
       color: var(--text-primary);
       background: var(--bg-tertiary);
       
@@ -250,7 +280,7 @@ export default {
       padding: 14px 16px;
       width: 100%;
       
-      &.router-link-active::before {
+      &.active::before {
         left: 16px;
         transform: none;
       }
