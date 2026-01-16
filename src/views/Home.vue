@@ -6,8 +6,7 @@
       
       <div class="container">
         <div class="hero-content">
-          
-          <h1 class="hero-title">
+          <h1 class="page-title hero-title">
             Hi, I'm <span class="gradient-text">Vibhooshana</span>
           </h1>
           
@@ -19,6 +18,11 @@
             I craft exceptional digital experiences that combine beautiful design 
             with powerful functionality. Specializing in modern web technologies 
             and user-centric solutions.
+          </p>
+          
+          <p class="hero-description">
+            With a passion for clean code and innovative problem-solving, I transform 
+            ideas into scalable applications that make a real impact.
           </p>
           
           <div class="hero-actions">

@@ -2,9 +2,23 @@
   <div class="interests">
     <div class="container">
       <section class="interests-hero section">
-        <div class="hero-content fade-in-up">
-          <h1 class="page-title">Interests & Hobbies</h1>
-          <p class="page-subtitle">Beyond coding, here's what keeps me inspired and motivated</p>
+        <div class="hero-grid">
+          <div class="hero-left fade-in-left">
+            <h1 class="page-title">Interests & Hobbies</h1>
+            <p class="page-description">
+              Beyond coding, I'm passionate about exploring creative pursuits and activities 
+              that keep me inspired and motivated.
+            </p>
+            <p class="page-description">
+              These interests help me maintain balance, spark creativity, and bring fresh 
+              perspectives to my work as a developer.
+            </p>
+          </div>
+          <div class="hero-right fade-in-right">
+            <div class="interests-visual">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -115,25 +129,62 @@ export default {
 }
 
 .interests-hero {
-  text-align: center;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
   
-  .page-title {
-    font-size: 3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 24px;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  margin-bottom: 20px;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.interests-visual {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: white;
+  animation: float 3s ease-in-out infinite;
 }
 
 .main-interests {
@@ -268,6 +319,16 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .interests-hero {
+    padding-top: 80px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
   .fun-activities {
     padding: 40px 20px;
   }
