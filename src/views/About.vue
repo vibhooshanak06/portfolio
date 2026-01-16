@@ -457,9 +457,10 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .about-hero {
     padding-top: 80px;
+    min-height: auto;
   }
   
   .hero-grid {
@@ -472,9 +473,30 @@ export default {
     font-size: 2.5rem;
   }
   
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  .about-image {
+    width: 200px;
+    height: 200px;
+    font-size: 64px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
   .values-section,
   .fun-facts {
     padding: 40px 20px;
+  }
+  
+  .values-grid,
+  .facts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   
   .timeline::before {
@@ -487,6 +509,37 @@ export default {
     .timeline-marker {
       left: 5px;
     }
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .about-image {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .value-card,
+  .activity-card {
+    padding: 24px;
+  }
+  
+  .value-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .story-paragraphs p {
+    font-size: 1rem;
   }
 }
 </style>

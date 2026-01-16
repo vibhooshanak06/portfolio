@@ -388,9 +388,10 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .contact-hero {
     padding-top: 80px;
+    min-height: auto;
   }
   
   .hero-grid {
@@ -399,13 +400,90 @@ export default {
     text-align: center;
   }
   
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  .contact-visual {
+    width: 200px;
+    height: 200px;
+    font-size: 64px;
+    margin: 0 auto;
+  }
+  
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
   
+  .form-title,
+  .info-title {
+    font-size: 1.75rem;
+  }
+  
   .social-links {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .contact-visual {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+  }
+  
+  .form-title,
+  .info-title {
+    font-size: 1.5rem;
+  }
+  
+  .contact-form {
+    .form-group {
+      margin-bottom: 20px;
+      
+      label {
+        font-size: 0.9375rem;
+      }
+      
+      input,
+      textarea {
+        padding: 14px;
+        font-size: 15px;
+      }
+    }
+    
+    .submit-btn {
+      padding: 14px;
+      font-size: 15px;
+    }
+  }
+  
+  .contact-method {
+    padding: 20px;
+    
+    .method-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
+    
+    .method-info h3 {
+      font-size: 1.125rem;
+    }
+  }
+  
+  .social-link {
+    padding: 14px;
+    font-size: 0.9375rem;
   }
 }
 </style>

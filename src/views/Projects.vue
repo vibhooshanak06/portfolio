@@ -210,9 +210,10 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .projects-hero {
     padding-top: 80px;
+    min-height: auto;
   }
   
   .hero-grid {
@@ -221,8 +222,55 @@ export default {
     text-align: center;
   }
   
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  .projects-visual {
+    width: 200px;
+    height: 200px;
+    font-size: 64px;
+    margin: 0 auto;
+  }
+  
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .projects-visual {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+  }
+  
+  .project-card {
+    .project-image {
+      height: 180px;
+      font-size: 40px;
+    }
+    
+    .project-content {
+      padding: 20px;
+    }
+    
+    .project-title {
+      font-size: 1.125rem;
+    }
+    
+    .project-description {
+      font-size: 0.875rem;
+    }
   }
 }
 </style>
