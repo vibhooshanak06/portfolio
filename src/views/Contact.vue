@@ -2,9 +2,23 @@
   <div class="contact">
     <div class="container">
       <section class="contact-hero section">
-        <div class="hero-content fade-in-up">
-          <h1 class="page-title">Get In Touch</h1>
-          <p class="page-subtitle">Let's discuss your next project or just say hello!</p>
+        <div class="hero-grid">
+          <div class="hero-left fade-in-left">
+            <h1 class="page-title">Get In Touch</h1>
+            <p class="page-description">
+              I'm always excited to connect with fellow developers, potential clients, 
+              and anyone interested in collaborating on innovative projects.
+            </p>
+            <p class="page-description">
+              Whether you have a project in mind, want to discuss opportunities, or just 
+              want to say hello, I'd love to hear from you!
+            </p>
+          </div>
+          <div class="hero-right fade-in-right">
+            <div class="contact-visual">
+              <i class="fas fa-envelope"></i>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -143,25 +157,62 @@ export default {
 }
 
 .contact-hero {
-  text-align: center;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
   
-  .page-title {
-    font-size: 3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 24px;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  margin-bottom: 20px;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.contact-visual {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: white;
+  animation: float 3s ease-in-out infinite;
 }
 
 .contact-content {
@@ -338,6 +389,16 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .contact-hero {
+    padding-top: 80px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;

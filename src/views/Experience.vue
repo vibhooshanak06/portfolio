@@ -3,11 +3,23 @@
     <div class="container">
       <!-- Hero Section -->
       <section class="experience-hero section">
-        <div class="hero-content fade-in-up">
-          <h1 class="page-title">Experience</h1>
-          <p class="page-subtitle">
-            My professional journey and the experiences that shaped my career
-          </p>
+        <div class="hero-grid">
+          <div class="hero-left fade-in-left">
+            <h1 class="page-title">Professional Experience</h1>
+            <p class="page-description">
+              My professional journey spans across diverse projects and technologies, 
+              from startups to established companies.
+            </p>
+            <p class="page-description">
+              Each role has shaped my expertise in full-stack development, team collaboration, 
+              and delivering high-quality solutions that exceed expectations.
+            </p>
+          </div>
+          <div class="hero-right fade-in-right">
+            <div class="experience-visual">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -220,25 +232,62 @@ export default {
 }
 
 .experience-hero {
-  text-align: center;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
   
-  .page-title {
-    font-size: 3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 24px;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  margin-bottom: 20px;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.experience-visual {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: white;
+  animation: float 3s ease-in-out infinite;
 }
 
 .work-experience {
@@ -590,6 +639,16 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .experience-hero {
+    padding-top: 80px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
   .experience-timeline::before {
     left: 15px;
   }

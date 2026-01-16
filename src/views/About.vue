@@ -3,14 +3,19 @@
     <div class="container">
       <!-- Hero Section -->
       <section class="about-hero section">
-        <div class="hero-content">
-          <div class="hero-text fade-in-left">
+        <div class="hero-grid">
+          <div class="hero-left fade-in-left">
             <h1 class="page-title">About Me</h1>
-            <p class="page-subtitle">
-              Passionate developer with a love for creating innovative digital solutions
+            <p class="page-description">
+              Passionate developer with a love for creating innovative digital solutions 
+              that make a difference in people's lives.
+            </p>
+            <p class="page-description">
+              I believe in continuous learning, collaboration, and building products 
+              that combine technical excellence with exceptional user experiences.
             </p>
           </div>
-          <div class="hero-image fade-in-right">
+          <div class="hero-right fade-in-right">
             <div class="about-image">
               <i class="fas fa-code"></i>
             </div>
@@ -184,48 +189,62 @@ export default {
 }
 
 .about-hero {
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.1;
   
-  .hero-text {
-    .page-title {
-      font-size: 3rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 24px;
-    }
-    
-    .page-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-  }
-  
-  .hero-image {
-    display: flex;
-    justify-content: center;
-    
-    .about-image {
-      width: 250px;
-      height: 250px;
-      background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 80px;
-      color: white;
-      animation: float 3s ease-in-out infinite;
-    }
-  }
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  margin-bottom: 20px;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.about-image {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: white;
+  animation: float 3s ease-in-out infinite;
 }
 
 .story-section {
@@ -439,13 +458,17 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .about-hero .hero-content {
+  .about-hero {
+    padding-top: 80px;
+  }
+  
+  .hero-grid {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
   }
   
-  .about-hero .hero-text .page-title {
+  .page-title {
     font-size: 2.5rem;
   }
   
