@@ -154,7 +154,7 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .footer {
     padding: 50px 0 24px;
     margin-top: 80px;
@@ -179,6 +179,48 @@ export default {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 40px 0 20px;
+    margin-top: 60px;
+  }
+  
+  .footer-content {
+    gap: 24px;
+  }
+  
+  .brand-logo {
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+    }
+    
+    .logo-text {
+      font-size: 18px;
+    }
+  }
+  
+  .brand-description {
+    font-size: 0.875rem;
+  }
+  
+  .social-links {
+    gap: 8px;
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+  
+  .copyright,
+  .footer-meta {
+    font-size: 0.8125rem;
   }
 }
 </style>

@@ -254,6 +254,16 @@ export default {
 }
 
 @media (max-width: 968px) {
+  .nav-content {
+    padding: 16px 0;
+  }
+  
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
   .nav-links {
     position: fixed;
     top: 76px;
@@ -269,6 +279,8 @@ export default {
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     gap: 4px;
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
     
     &.active {
       transform: translateY(0);
@@ -279,6 +291,7 @@ export default {
     a {
       padding: 14px 16px;
       width: 100%;
+      font-size: 15px;
       
       &.active::before {
         left: 16px;
@@ -293,6 +306,33 @@ export default {
   
   .logo-text {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-content {
+    padding: 14px 0;
+  }
+  
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .theme-toggle,
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+  
+  .theme-toggle {
+    font-size: 14px;
+  }
+  
+  .hamburger-line {
+    width: 16px;
   }
 }
 </style>

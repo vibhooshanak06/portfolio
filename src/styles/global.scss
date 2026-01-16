@@ -295,3 +295,42 @@ html {
         padding: 0 16px;
     }
 }
+
+@media (max-width: 968px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 50px 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+}
