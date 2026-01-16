@@ -466,10 +466,23 @@ export default {
 @media (max-width: 968px) {
   .hero {
     padding: 100px 0 60px;
+    min-height: auto;
   }
   
   .section {
-    padding: 80px 0;
+    padding: 60px 0;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
   }
   
   .skills-content {
@@ -487,13 +500,52 @@ export default {
 }
 
 @media (max-width: 640px) {
+  .hero {
+    padding: 80px 0 40px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .hero-description {
+    font-size: 0.9375rem;
+  }
+  
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
     
     .btn {
       width: 100%;
+      padding: 14px 24px;
     }
+  }
+  
+  .section {
+    padding: 50px 0;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-description {
+    font-size: 0.9375rem;
+  }
+  
+  .skill-card {
+    padding: 20px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 </style>

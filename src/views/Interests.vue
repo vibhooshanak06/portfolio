@@ -318,9 +318,10 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .interests-hero {
     padding-top: 80px;
+    min-height: auto;
   }
   
   .hero-grid {
@@ -329,8 +330,70 @@ export default {
     text-align: center;
   }
   
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  .interests-visual {
+    width: 200px;
+    height: 200px;
+    font-size: 64px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .interests-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .activities-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
   .fun-activities {
     padding: 40px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .interests-visual {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .interest-card {
+    padding: 24px;
+  }
+  
+  .interest-image {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .activity-card {
+    padding: 24px;
   }
 }
 </style>

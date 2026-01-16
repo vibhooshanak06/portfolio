@@ -656,6 +656,10 @@ export default {
     padding-top: 80px;
   }
   
+  .skills-hero {
+    min-height: auto;
+  }
+  
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 60px;
@@ -663,6 +667,14 @@ export default {
   
   .hero-left {
     text-align: center;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
   }
   
   .stats-mini {
@@ -678,6 +690,10 @@ export default {
     grid-template-columns: 1fr;
   }
   
+  .certifications {
+    padding: 40px 20px;
+  }
+  
   @keyframes orbit {
     from {
       transform: rotate(0deg) translateX(165px);
@@ -689,6 +705,14 @@ export default {
 }
 
 @media (max-width: 640px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-description {
+    font-size: 0.9375rem;
+  }
+  
   .orbital-container {
     width: 100%;
     max-width: 350px;
@@ -725,8 +749,29 @@ export default {
     gap: 20px;
   }
   
-  .certifications {
-    padding: 40px 20px;
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .tech-stack-item {
+    padding: 20px;
+  }
+  
+  .tech-category-name {
+    font-size: 1rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+  
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cert-card {
+    padding: 24px;
   }
   
   @keyframes orbit {

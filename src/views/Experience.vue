@@ -638,9 +638,10 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .experience-hero {
     padding-top: 80px;
+    min-height: auto;
   }
   
   .hero-grid {
@@ -649,31 +650,111 @@ export default {
     text-align: center;
   }
   
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+  
+  .experience-visual {
+    width: 200px;
+    height: 200px;
+    font-size: 64px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
   .experience-timeline::before {
     left: 15px;
   }
   
   .experience-item {
     padding-left: 50px;
+    margin-bottom: 40px;
     
     .experience-marker {
       left: 3px;
     }
   }
   
-  .experience-card .experience-header {
-    flex-direction: column;
-    gap: 16px;
+  .experience-card {
+    padding: 24px;
+    
+    .experience-header {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    
+    .company-logo {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
   }
   
-  .education-grid .education-card {
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .education-card {
     flex-direction: column;
     text-align: center;
+    padding: 24px;
+  }
+  
+  .education-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin: 0 auto;
+  }
+  
+  .certifications-grid {
+    grid-template-columns: 1fr;
   }
   
   .education,
   .skills-progress {
     padding: 40px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .experience-visual {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .experience-card {
+    padding: 20px;
+  }
+  
+  .job-title {
+    font-size: 1.25rem;
+  }
+  
+  .job-description ul li {
+    font-size: 0.9375rem;
+  }
+  
+  .certification-card {
+    padding: 20px;
   }
 }
 </style>
