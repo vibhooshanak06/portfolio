@@ -16,8 +16,15 @@
             </p>
           </div>
           <div class="hero-right fade-in-right">
-            <div class="about-image">
-              <i class="fas fa-code"></i>
+            <div class="photo-container">
+              <div class="orbit-ring">
+                <div class="orbit-dot orbit-dot-1"></div>
+                <div class="orbit-dot orbit-dot-2"></div>
+                <div class="orbit-dot orbit-dot-3"></div>
+              </div>
+              <div class="about-image">
+                <img src="@/assets/web.jpeg" alt="Vibhooshana Kannan" class="profile-photo">
+              </div>
             </div>
           </div>
         </div>
@@ -234,17 +241,92 @@ export default {
   animation: fadeInRight 0.8s ease-out;
 }
 
+.photo-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+  
+  .orbit-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
+    
+    &.orbit-dot-1 {
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    &.orbit-dot-2 {
+      top: 50%;
+      right: -5px;
+      transform: translateY(-50%);
+      animation: pulse 2s ease-in-out infinite 0.7s;
+    }
+    
+    &.orbit-dot-3 {
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s ease-in-out infinite 1.4s;
+    }
+  }
+}
+
 .about-image {
   width: 250px;
   height: 250px;
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-  border-radius: 20px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 80px;
-  color: white;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  border: 3px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
   animation: float 3s ease-in-out infinite;
+  
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
 }
 
 .story-section {
@@ -480,8 +562,17 @@ export default {
   .about-image {
     width: 200px;
     height: 200px;
-    font-size: 64px;
     margin: 0 auto;
+    
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .orbit-ring {
+    width: 240px;
+    height: 240px;
   }
   
   .section-title {
@@ -520,7 +611,21 @@ export default {
   .about-image {
     width: 150px;
     height: 150px;
-    font-size: 48px;
+    
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .orbit-ring {
+    width: 190px;
+    height: 190px;
+    
+    .orbit-dot {
+      width: 8px;
+      height: 8px;
+    }
   }
   
   .section-title {
