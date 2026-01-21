@@ -92,5 +92,32 @@ export default {
 
 .page-section {
   scroll-margin-top: 80px;
+  
+  // Reduce gaps between sections
+  &:not(#home) {
+    padding-top: 40px;
+  }
+  
+  &#home {
+    padding-bottom: 40px;
+  }
+}
+
+// Simple smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Reduce section padding globally
+:deep(.section) {
+  padding: 50px 0;
+  
+  @media (max-width: 968px) {
+    padding: 40px 0;
+  }
+  
+  @media (max-width: 640px) {
+    padding: 30px 0;
+  }
 }
 </style>
