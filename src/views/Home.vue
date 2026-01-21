@@ -38,68 +38,12 @@
       </div>
       
     </section>
-
-    <!-- Skills Overview -->
-    <section class="skills-overview section">
-      <div class="container">
-        <div class="skills-content">
-          <div class="skills-text">
-            <div class="section-label">Expertise</div>
-            <h2 class="section-title">What I Do Best</h2>
-            <p class="section-description">
-              I specialize in building modern web applications with cutting-edge 
-              technologies, focusing on performance, scalability, and user experience.
-            </p>
-            <a href="#skills" @click="scrollToSection('skills')" class="btn btn-outline">
-              <span>Explore Skills</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          
-          <div class="skills-grid">
-            <div class="skill-card" v-for="skill in topSkills" :key="skill.name">
-              <div class="skill-icon">
-                <i :class="skill.icon"></i>
-              </div>
-              <h4 class="skill-name">{{ skill.name }}</h4>
-              <p class="skill-description">{{ skill.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {
-      topSkills: [
-        {
-          name: 'Frontend Development',
-          description: 'Building responsive UIs with Vue, React, and modern CSS',
-          icon: 'fas fa-code'
-        },
-        {
-          name: 'Backend Development',
-          description: 'Creating scalable APIs with Node.js and databases',
-          icon: 'fas fa-server'
-        },
-        {
-          name: 'UI/UX Design',
-          description: 'Designing intuitive interfaces with Figma',
-          icon: 'fas fa-palette'
-        },
-        {
-          name: 'DevOps',
-          description: 'Deploying and managing cloud infrastructure',
-          icon: 'fas fa-cloud'
-        }
-      ]
-    }
-  },
   methods: {
     scrollToSection(sectionId) {
       const element = document.getElementById(sectionId)
@@ -119,15 +63,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// Hero Section
+// Hero Section with reduced padding
 .hero {
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 120px 0 80px;
+  padding: 100px 0 50px;
 }
 
 .hero-bg-gradient {
@@ -371,85 +315,6 @@ export default {
   }
 }
 
-// Skills Overview Section
-.skills-overview {
-  background: var(--bg-primary);
-}
-
-.skills-content {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.skills-text {
-  position: sticky;
-  top: 120px;
-  
-  .section-title {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-  
-  .section-description {
-    text-align: left;
-    margin-bottom: 32px;
-  }
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.skill-card {
-  padding: 28px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  &:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow);
-    
-    .skill-icon {
-      transform: scale(1.1);
-      color: var(--primary-light);
-    }
-  }
-}
-
-.skill-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-tertiary);
-  border-radius: 12px;
-  font-size: 24px;
-  color: var(--primary);
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-
-.skill-name {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.skill-description {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--text-tertiary);
-}
-
 // Animations
 @keyframes fadeInUp {
   from {
@@ -462,15 +327,15 @@ export default {
   }
 }
 
-// Responsive
+// Responsive with reduced padding
 @media (max-width: 968px) {
   .hero {
-    padding: 100px 0 60px;
+    padding: 80px 0 40px;
     min-height: auto;
   }
   
   .section {
-    padding: 60px 0;
+    padding: 40px 0;
   }
   
   .hero-title {
@@ -484,24 +349,11 @@ export default {
   .hero-description {
     font-size: 1rem;
   }
-  
-  .skills-content {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-  
-  .skills-text {
-    position: static;
-  }
-  
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding: 80px 0 40px;
+    padding: 60px 0 30px;
   }
   
   .hero-title {
@@ -528,7 +380,7 @@ export default {
   }
   
   .section {
-    padding: 50px 0;
+    padding: 30px 0;
   }
   
   .section-title {
@@ -537,10 +389,6 @@ export default {
   
   .section-description {
     font-size: 0.9375rem;
-  }
-  
-  .skill-card {
-    padding: 20px;
   }
   
   .projects-grid {
