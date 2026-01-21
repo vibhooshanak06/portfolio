@@ -76,7 +76,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-// Smooth scrolling
+// Simple smooth scrolling
 html {
     scroll-behavior: smooth;
 }
@@ -99,7 +99,7 @@ html {
     background: var(--primary-light);
 }
 
-// Animations
+// Simple animations
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -160,7 +160,7 @@ html {
     }
 }
 
-// Utility Classes
+// Simple utility classes
 .fade-in-up {
     animation: fadeInUp 0.8s ease-out;
 }
@@ -280,15 +280,15 @@ html {
     padding: 0 20px;
 }
 
-// Section padding
+// Section padding - reduced for tighter layout
 .section {
-    padding: 80px 0;
+    padding: 50px 0;
 }
 
-// Responsive
+// Responsive with reduced padding
 @media (max-width: 768px) {
     .section {
-        padding: 60px 0;
+        padding: 40px 0;
     }
 
     .container {
@@ -298,7 +298,7 @@ html {
 
 @media (max-width: 968px) {
     .section {
-        padding: 60px 0;
+        padding: 45px 0;
     }
 
     .container {
@@ -317,7 +317,7 @@ html {
 
 @media (max-width: 640px) {
     .section {
-        padding: 50px 0;
+        padding: 35px 0;
     }
 
     .container {
