@@ -6,34 +6,33 @@
       
       <div class="container">
         <div class="hero-content">
+
           <h1 class="page-title hero-title">
             Hi, I'm <span class="gradient-text">Vibhooshana</span>
           </h1>
           
           <h2 class="hero-subtitle">
-            Full Stack Developer
+            Aspiring Software Developer Engineer
           </h2>
           
           <p class="hero-description">
-            I craft exceptional digital experiences that combine beautiful design 
-            with powerful functionality. Specializing in modern web technologies 
-            and user-centric solutions.
+            I enjoy building clean, user-friendly web applications and turning 
+            ideas into real, functional products. For me, development is not just 
+            about code — it's about solving problems that matter.
           </p>
           
           <p class="hero-description">
-            With a passion for clean code and innovative problem-solving, I transform 
-            ideas into scalable applications that make a real impact.
+            I'm constantly learning, experimenting with new technologies, and 
+            improving my skills to create scalable and impactful digital solutions.
           </p>
           
           <div class="hero-actions">
-            <a href="#projects" @click="scrollToSection('projects')" class="btn btn-primary">
-              <span>View My Work</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#contact" @click="scrollToSection('contact')" class="btn btn-outline">
-              <span>Get In Touch</span>
+            <a href="/resume.pdf" target="_blank" class="btn btn-primary">
+              <span>View My Resume</span>
+              <i class="fas fa-download"></i>
             </a>
           </div>
+
         </div>
       </div>
       

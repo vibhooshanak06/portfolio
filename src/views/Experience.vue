@@ -3,61 +3,80 @@
     <div class="container">
       <!-- Hero Section -->
       <section class="experience-hero section">
-        <div class="hero-grid">
-          <div class="hero-left fade-in-left">
-            <h1 class="page-title">Professional Experience</h1>
-            <p class="page-description">
-              My professional journey spans across diverse projects and technologies, 
-              from startups to established companies.
-            </p>
-            <p class="page-description">
-              Each role has shaped my expertise in full-stack development, team collaboration, 
-              and delivering high-quality solutions that exceed expectations.
-            </p>
-          </div>
-          <div class="hero-right fade-in-right">
-            <div class="experience-visual">
-              <i class="fas fa-briefcase"></i>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div class="hero-grid">
+    
+    <div class="hero-left fade-in-left">
+      <h1 class="page-title">Professional Experience</h1>
 
-      <!-- Work Experience -->
-      <section class="work-experience section">
-        <h2 class="section-title fade-in-up">Work Experience</h2>
-        <div class="experience-timeline">
-          <div class="experience-item fade-in-left" v-for="job in workExperience" :key="job.id">
-            <div class="experience-marker">
-              <div class="experience-dot"></div>
-            </div>
-            <div class="experience-card">
-              <div class="experience-header">
-                <div class="company-info">
-                  <h3 class="job-title">{{ job.title }}</h3>
-                  <h4 class="company-name">{{ job.company }}</h4>
-                  <div class="job-period">{{ job.period }}</div>
-                </div>
-                <div class="company-logo">
-                  <i :class="job.icon"></i>
-                </div>
-              </div>
-              <div class="job-description">
-                <ul>
-                  <li v-for="responsibility in job.responsibilities" :key="responsibility">
-                    {{ responsibility }}
-                  </li>
-                </ul>
-              </div>
-              <div class="job-technologies">
-                <span v-for="tech in job.technologies" :key="tech" class="tech-tag">
-                  {{ tech }}
-                </span>
-              </div>
-            </div>
-          </div>
+     <p class="page-description">
+  I'm a fresher actively seeking full-time opportunities in software development, 
+  backed by hands-on experience from internships and real-world projects. I’ve built 
+  applications, worked on practical problems, and understood how to turn ideas into 
+  functional solutions.
+</p>
+
+<p class="page-description">
+  Through my projects and experience, I’ve developed a strong interest in full-stack 
+  development and enjoy working across both frontend and backend. I focus on writing 
+  clean code, building user-friendly interfaces, and creating efficient systems.
+</p>
+
+<p class="page-description">
+  I’m driven to learn, grow, and take on new challenges. I enjoy working in collaborative 
+  environments and aim to contribute to meaningful projects while continuously improving 
+  my skills as a developer.
+</p>
+    </div>
+
+    <div class="hero-right fade-in-right">
+      <div class="experience-visual">
+        <i class="fas fa-briefcase"></i>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+     <!-- Work Experience -->
+<section class="work-experience section">
+  <h2 class="section-title fade-in-up">Work Experience</h2>
+
+  <div class="single-experience fade-in-up">
+    <div class="experience-card">
+
+      <div class="experience-header">
+        <div class="company-info">
+          <h3 class="job-title">{{ workExperience.title }}</h3>
+          <h4 class="company-name">{{ workExperience.company }}</h4>
+          <div class="job-period">{{ workExperience.period }}</div>
         </div>
-      </section>
+
+        <div class="company-logo">
+          <i :class="workExperience.icon"></i>
+        </div>
+      </div>
+
+      <div class="job-description">
+        <ul>
+          <li v-for="item in workExperience.responsibilities" :key="item">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="job-technologies">
+        <span v-for="tech in workExperience.technologies" :key="tech" class="tech-tag">
+          {{ tech }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       <!-- Education -->
       <section class="education section">
@@ -119,107 +138,69 @@
 <script>
 export default {
   name: 'Experience',
+
   data() {
     return {
-      workExperience: [
-        {
-          id: 1,
-          title: 'Senior Full Stack Developer',
-          company: 'TechCorp Solutions',
-          period: 'Jan 2023 - Present',
-          icon: 'fas fa-building',
-          responsibilities: [
-            'Led development of scalable web applications using Vue.js and Node.js',
-            'Mentored junior developers and conducted code reviews',
-            'Implemented CI/CD pipelines and improved deployment processes',
-            'Collaborated with cross-functional teams to deliver high-quality products'
-          ],
-          technologies: ['Vue.js', 'Node.js', 'MongoDB', 'AWS', 'Docker']
-        },
-        {
-          id: 2,
-          title: 'Full Stack Developer',
-          company: 'StartupXYZ',
-          period: 'Jun 2022 - Dec 2022',
-          icon: 'fas fa-rocket',
-          responsibilities: [
-            'Developed and maintained multiple client projects simultaneously',
-            'Built responsive web applications with modern JavaScript frameworks',
-            'Integrated third-party APIs and payment gateways',
-            'Optimized application performance and user experience'
-          ],
-          technologies: ['React', 'Express.js', 'PostgreSQL', 'Stripe API']
-        },
-        {
-          id: 3,
-          title: 'Junior Web Developer',
-          company: 'Digital Agency Pro',
-          period: 'Mar 2021 - May 2022',
-          icon: 'fas fa-laptop-code',
-          responsibilities: [
-            'Assisted in developing client websites and web applications',
-            'Learned and applied best practices in web development',
-            'Participated in agile development processes',
-            'Contributed to team projects and gained valuable experience'
-          ],
-          technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL']
-        }
-      ],
+      /* ✅ SINGLE REAL EXPERIENCE */
+      workExperience: {
+        title: "Software Development Engineer Intern",
+        company: "Yuma Energy",
+        period: "June 2025 - December 2025",
+        icon: "fas fa-building",
+        responsibilities: [
+          "Developed and improved features for web applications",
+          "Worked on frontend and backend integration",
+          "Collaborated with team members to deliver project tasks",
+          "Gained hands-on experience in real-world development workflows"
+        ],
+        technologies: ["React","Vue","MySQL", "Node.js", "MongoDB"]
+      },
+
+      /* ✅ EDUCATION (keep yours or modify) */
       education: [
         {
           id: 1,
-          degree: 'Bachelor of Science in Computer Science',
-          institution: 'University of Technology',
-          period: '2017 - 2021',
+          degree: 'MSc Integrated Software Systems',
+          institution: 'Coimbatore Institute of Technology',
+          period: '2022 - Present',
           icon: 'fas fa-graduation-cap',
-          description: 'Focused on software engineering, algorithms, and web technologies. Graduated with honors.'
+          description: 'Focused on software development, problem-solving, and building real-world applications.'
         },
         {
           id: 2,
-          degree: 'Full Stack Web Development Bootcamp',
-          institution: 'CodeAcademy Pro',
-          period: '2020',
-          icon: 'fas fa-code',
-          description: 'Intensive 6-month program covering modern web development technologies and best practices.'
+          degree: 'Higher Secondary Education',
+          institution: 'Little Flower Convent Matric Hr Sec School',
+          period: 'Completed',
+          icon: 'fas fa-school',
+          description: 'Built a strong academic foundation and developed interest in technology.'
         }
       ],
+
+      /* ✅ CERTIFICATIONS (edit if needed) */
       certifications: [
         {
           id: 1,
-          title: 'AWS Certified Developer',
-          issuer: 'Amazon Web Services',
-          date: '2023',
-          icon: 'fab fa-aws'
+          title: 'Code Forge Series Winner',
+          issuer: 'SDC CIT',
+          date: '2025',
+          icon: 'fas fa-trophy'
         },
         {
           id: 2,
-          title: 'Vue.js Certified Developer',
-          issuer: 'Vue School',
-          date: '2022',
-          icon: 'fab fa-vuejs'
-        },
-        {
-          id: 3,
-          title: 'MongoDB Certified Developer',
-          issuer: 'MongoDB University',
-          date: '2022',
-          icon: 'fas fa-database'
-        },
-        {
-          id: 4,
-          title: 'Google Analytics Certified',
-          issuer: 'Google',
-          date: '2021',
-          icon: 'fab fa-google'
+          title: 'CODEVORTEX Hackathon Recognition',
+          issuer: 'CIT Computing Association',
+          date: '2025',
+          icon: 'fas fa-medal'
         }
       ],
+
+      /* ✅ SKILLS (realistic for fresher) */
       skillsProgress: [
-        { name: 'JavaScript/TypeScript', level: 95 },
-        { name: 'Vue.js/React', level: 90 },
-        { name: 'Node.js/Express', level: 85 },
-        { name: 'Database Design', level: 80 },
-        { name: 'Cloud Services (AWS)', level: 75 },
-        { name: 'DevOps/CI-CD', level: 70 }
+        { name: 'JavaScript', level: 80 },
+        { name: 'React.js', level: 75 },
+        { name: 'Node.js', level: 70 },
+        { name: 'MongoDB', level: 70 },
+        { name: 'Problem Solving', level: 85 }
       ]
     }
   }
@@ -232,49 +213,62 @@ export default {
 }
 
 .experience-hero {
-  min-height: 90vh;
+  min-height: 40vh;
   display: flex;
-  align-items: center;
-  padding: 60px 0;
+  align-items: flex-start;
+  padding: 10px 0 0; /* remove bottom space */
 }
 
+/* GRID */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 50px; /* reduced from 80px → tighter */
   align-items: center;
 }
 
+/* LEFT */
 .hero-left {
   animation: fadeInLeft 0.8s ease-out;
 }
 
+/* TITLE */
 .page-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
   line-height: 1.1;
-  
+
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
+/* DESCRIPTION */
 .page-description {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--text-tertiary);
-  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 14px; /* tighter */
 }
 
+/* RIGHT */
 .hero-right {
   display: flex;
   justify-content: center;
   align-items: center;
   animation: fadeInRight 0.8s ease-out;
+}
+
+/* ICON (important polish) */
+.experience-visual {
+  font-size: 80px;
+  color: rgba(139, 92, 246, 0.7);
+  background: rgba(139, 92, 246, 0.08);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
 }
 
 .experience-visual {
