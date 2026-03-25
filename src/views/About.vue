@@ -1,61 +1,48 @@
 <template>
   <div class="about">
     <div class="container">
-      <!-- Hero Section -->
-      <section class="about-hero section">
-        <div class="hero-grid">
-          <div class="hero-left fade-in-left">
-            <h1 class="page-title">About Me</h1>
-            <p class="page-description">
-              Passionate developer with a love for creating innovative digital solutions 
-              that make a difference in people's lives.
-            </p>
-            <p class="page-description">
-              I believe in continuous learning, collaboration, and building products 
-              that combine technical excellence with exceptional user experiences.
-            </p>
-          </div>
-          <div class="hero-right fade-in-right">
-            <div class="photo-container">
-              <div class="orbit-ring">
-                <div class="orbit-dot orbit-dot-1"></div>
-                <div class="orbit-dot orbit-dot-2"></div>
-                <div class="orbit-dot orbit-dot-3"></div>
-              </div>
-              <div class="about-image">
-                <img src="@/assets/web.jpeg" alt="Vibhooshana Kannan" class="profile-photo">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Story Section -->
-      <section class="story-section section">
-        <div class="story-content">
-          <div class="story-text fade-in-up">
-            <h2 class="section-title">My Story</h2>
-            <div class="story-paragraphs">
-              <p>
-                Hello! I'm Vibhooshana Kannan, aspiring full-stack developer based in Tamilnadu. 
-                My journey into the world of programming began during my college years when 
-                I discovered the power of code to bring ideas to life.
-              </p>
-              <p>
-                With over 3 years of experience in web development, I've had the privilege 
-                of working on diverse projects ranging from e-commerce platforms to complex 
-                web applications. I believe in writing clean, efficient code and creating 
-                user experiences that make a difference.
-              </p>
-              <p>
-                When I'm not coding, you can find me exploring new technologies, contributing 
-                to open-source projects, or enjoying a good book with a cup of coffee. 
-                I'm always eager to learn and take on new challenges.
-              </p>
-            </div>
-          </div>
+     <section class="about-hero section">
+  <div class="hero-grid">
+    
+    <div class="hero-left fade-in-left">
+      <h1 class="page-title">About Me</h1>
+
+      <p class="page-description">
+        I'm Vibhooshana, an enthusiastic MSc Software Systems student based in 
+        Tirupur, Tamil Nadu, with a strong interest in full-stack development. 
+        I genuinely enjoy solving problems and turning ideas into real, working applications.
+      </p>
+
+      <p class="page-description">
+        With a solid foundation in programming and a curiosity to explore how things work, 
+        I continuously learn and experiment with new technologies. I focus on building 
+        practical, user-friendly solutions that are not just functional, but meaningful.
+      </p>
+
+      <p class="page-description">
+        Along with technical skills, I bring adaptability, leadership experience, and a 
+        collaborative mindset. Whether working independently or in a team, I aim to 
+        contribute effectively and keep improving with every project I take on.
+      </p>
+    </div>
+
+    <div class="hero-right fade-in-right">
+      <div class="photo-container">
+        <div class="orbit-ring">
+          <div class="orbit-dot orbit-dot-1"></div>
+          <div class="orbit-dot orbit-dot-2"></div>
+          <div class="orbit-dot orbit-dot-3"></div>
+        
         </div>
-      </section>
+        <div class="about-image">
+          <img src="@/assets/me.jpeg" alt="Vibhooshana Kannan" class="profile-photo">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
       <!-- Values Section -->
       <section class="values-section section">
@@ -71,22 +58,7 @@
         </div>
       </section>
 
-      <!-- Timeline Section -->
-      <section class="timeline-section section">
-        <h2 class="section-title fade-in-up">My Journey</h2>
-        <div class="timeline">
-          <div class="timeline-item fade-in-left" v-for="(item, index) in timeline" :key="item.id">
-            <div class="timeline-marker">
-              <div class="timeline-dot"></div>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-year">{{ item.year }}</div>
-              <h3 class="timeline-title">{{ item.title }}</h3>
-              <p class="timeline-description">{{ item.description }}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <!-- Fun Facts -->
       <section class="fun-facts section">
@@ -102,10 +74,10 @@
           </div>
         </div>
       </section>
+
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'About',
@@ -114,76 +86,78 @@ export default {
       values: [
         {
           id: 1,
-          icon: 'fas fa-lightbulb',
-          title: 'Innovation',
-          description: 'Always seeking creative solutions and staying updated with the latest technologies.'
+          icon: 'fas fa-code',
+          title: 'Building with Purpose',
+          description: 'I like creating projects that solve real problems instead of just coding for the sake of it.'
         },
         {
           id: 2,
-          icon: 'fas fa-users',
-          title: 'Collaboration',
-          description: 'Believing in the power of teamwork and open communication to achieve great results.'
+          icon: 'fas fa-brain',
+          title: 'Problem Solving',
+          description: 'I enjoy breaking down complex problems into simple steps and finding practical solutions.'
         },
         {
           id: 3,
-          icon: 'fas fa-heart',
-          title: 'Passion',
-          description: 'Genuinely loving what I do and putting my heart into every project I work on.'
+          icon: 'fas fa-users',
+          title: 'Team & Leadership',
+          description: 'Through events and teamwork, I’ve learned how to collaborate, lead, and get things done together.'
         },
         {
           id: 4,
-          icon: 'fas fa-graduation-cap',
-          title: 'Learning',
-          description: 'Continuously improving my skills and embracing new challenges as opportunities to grow.'
+          icon: 'fas fa-rocket',
+          title: 'Continuous Growth',
+          description: 'I’m always learning — whether it’s new tech, better coding practices, or improving myself.'
         }
       ],
+
       timeline: [
         {
           id: 1,
-          year: '2021',
-          title: 'Started My Journey',
-          description: 'Began learning web development and fell in love with creating digital experiences.'
+          year: '2022',
+          title: 'Started Exploring Programming',
+          description: 'Got introduced to programming in college and became curious about how things work behind the scenes.'
         },
         {
           id: 2,
-          year: '2022',
-          title: 'First Professional Role',
-          description: 'Joined a startup as a junior developer and gained valuable real-world experience.'
+          year: '2023',
+          title: 'Built My First Projects',
+          description: 'Started building small projects and slowly understood how to turn ideas into working applications.'
         },
         {
           id: 3,
-          year: '2023',
-          title: 'Full-Stack Developer',
-          description: 'Expanded my skills to become a full-stack developer, working with both frontend and backend technologies.'
+          year: '2024',
+          title: 'Real-World Project Development',
+          description: 'Worked on projects like PARK-N-GO and LIVISHIELD, focusing on solving practical problems.'
         },
         {
           id: 4,
-          year: '2024',
-          title: 'Freelance Success',
-          description: 'Started freelancing and successfully delivered multiple projects for various clients.'
+          year: '2025',
+          title: 'Leadership & Hackathons',
+          description: 'Organized events, participated in hackathons, and gained confidence in building under pressure.'
         }
       ],
+
       funFacts: [
         {
           id: 1,
-          icon: 'fas fa-coffee',
-          text: 'I drink at least 4 cups of coffee per day'
+          icon: 'fas fa-music',
+          text: 'I love listening to music while coding — it keeps me focused.'
         },
         {
           id: 2,
-          icon: 'fas fa-music',
-          text: 'I code better with lo-fi music playing'
+          icon: 'fas fa-utensils',
+          text: 'Cooking is something I genuinely enjoy when I take a break.'
         },
         {
           id: 3,
-          icon: 'fas fa-gamepad',
-          text: 'I love playing strategy games in my free time'
+          icon: 'fas fa-lightbulb',
+          text: 'I tend to overthink sometimes, but it actually helps me plan better solutions.'
         },
         {
-          id: 4,
-          icon: 'fas fa-mountain',
-          text: 'I enjoy hiking and outdoor photography'
-        }
+  id: 4,
+  icon: 'fas fa-book',
+  text: 'I enjoy reading books and learning new things at my own pace.'
+}
       ]
     }
   }
@@ -192,53 +166,61 @@ export default {
 
 <style scoped lang="scss">
 .about {
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
+/* HERO */
 .about-hero {
-  min-height: 90vh;
+  min-height: 20vh;
   display: flex;
   align-items: center;
-  padding: 60px 0;
+  padding: 20px 0;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 50px;
   align-items: center;
-}
-
-.hero-left {
-  animation: fadeInLeft 0.8s ease-out;
 }
 
 .page-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 24px;
-  line-height: 1.1;
-  
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .page-description {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--text-tertiary);
-  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  color: var(--text-secondary);
 }
 
+/* IMAGE */
 .hero-right {
   display: flex;
   justify-content: center;
-  align-items: center;
-  animation: fadeInRight 0.8s ease-out;
+}
+
+.about-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
+
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .photo-container {
@@ -248,68 +230,123 @@ export default {
   align-items: center;
 }
 
+/* ORBIT RING */
 .orbit-ring {
   position: absolute;
-  width: 280px;
-  height: 280px;
-  border: 2px solid rgba(139, 92, 246, 0.3);
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  animation: rotate 20s linear infinite;
-  
-  .orbit-dot {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
-    
-    &.orbit-dot-1 {
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    
-    &.orbit-dot-2 {
-      top: 50%;
-      right: -5px;
-      transform: translateY(-50%);
-      animation: pulse 2s ease-in-out infinite 0.7s;
-    }
-    
-    &.orbit-dot-3 {
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: pulse 2s ease-in-out infinite 1.4s;
-    }
-  }
+  border: 1.5px solid rgba(139, 92, 246, 0.25);
+  animation: rotateOrbit 18s linear infinite;
 }
 
-.about-image {
-  width: 250px;
-  height: 250px;
+/* ORBIT DOTS */
+.orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+/* Positions */
+.orbit-dot-1 {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.orbit-dot-2 {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.orbit-dot-3 {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.photo-container {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+/* BRIGHT ORBIT RING */
+.orbit-ring {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  
+  border: 2px solid rgba(139, 92, 246, 0.6);
+  box-shadow: 
+    0 0 25px rgba(139, 92, 246, 0.6),
+    0 0 60px rgba(139, 92, 246, 0.3);
+
+  animation: rotateOrbit 12s linear infinite;
+}
+
+/* DOTS */
+.orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.9);
+}
+
+.orbit-dot-1 {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.orbit-dot-2 {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.orbit-dot-3 {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* PROFILE IMAGE (STATIC) */
+.about-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
   overflow: hidden;
   position: relative;
   z-index: 2;
-  border: 3px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
-  animation: float 3s ease-in-out infinite;
-  
+
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
   .profile-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
   }
 }
 
-@keyframes rotate {
+/* ORBIT ROTATION */
+@keyframes rotateOrbit {
   from {
     transform: rotate(0deg);
   }
@@ -318,333 +355,128 @@ export default {
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.7;
-  }
-}
-
-.story-section {
-  .story-text {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 40px;
-    }
-    
-    .story-paragraphs {
-      p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: var(--text-secondary);
-        margin-bottom: 24px;
-        text-align: left;
-        
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-}
-
+/* VALUES */
 .values-section {
-  background: var(--bg-secondary);
-  border-radius: 20px;
-  padding: 60px 40px;
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+
+  /* Gradient text color */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.value-card {
+  background: var(--bg-card);
+  padding: 22px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
   }
-  
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 32px;
-    
-    .value-card {
-      background: var(--bg-card);
-      padding: 32px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-      }
-      
-      .value-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        color: white;
-        margin: 0 auto 24px;
-      }
-      
-      .value-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 16px;
-      }
-      
-      .value-description {
-        color: var(--text-secondary);
-        line-height: 1.6;
-      }
-    }
+
+  .value-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    color: white;
+    font-size: 20px;
+  }
+
+  .value-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .value-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
   }
 }
 
-.timeline-section {
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .timeline {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      left: 30px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary-purple);
-    }
-    
-    .timeline-item {
-      position: relative;
-      padding-left: 80px;
-      margin-bottom: 40px;
-      
-      .timeline-marker {
-        position: absolute;
-        left: 20px;
-        top: 0;
-        
-        .timeline-dot {
-          width: 20px;
-          height: 20px;
-          background: var(--primary-purple);
-          border-radius: 50%;
-          border: 4px solid var(--bg-primary);
-        }
-      }
-      
-      .timeline-content {
-        .timeline-year {
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: var(--primary-purple);
-          margin-bottom: 8px;
-        }
-        
-        .timeline-title {
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 12px;
-        }
-        
-        .timeline-description {
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
-      }
-    }
-  }
-}
-
+/* FUN FACTS */
 .fun-facts {
-  background: var(--bg-secondary);
-  border-radius: 20px;
-  padding: 60px 40px;
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
+  margin-top: 40px;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.fact-item {
+  background: var(--bg-card);
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border-color);
+  transition: 0.25s ease;
+
+  &:hover {
+    transform: translateX(3px);
   }
-  
-  .facts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
-    
-    .fact-item {
-      background: var(--bg-card);
-      padding: 24px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      
-      &:hover {
-        transform: translateX(5px);
-      }
-      
-      .fact-icon {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: white;
-        flex-shrink: 0;
-      }
-      
-      .fact-text {
-        color: var(--text-secondary);
-        font-weight: 500;
-      }
-    }
+
+  .fact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    color: white;
+    font-size: 16px;
+  }
+
+  .fact-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
   }
 }
 
-@media (max-width: 968px) {
-  .about-hero {
-    padding-top: 80px;
-    min-height: auto;
-  }
-  
+/* RESPONSIVE */
+@media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
     text-align: center;
   }
-  
-  .page-title {
-    font-size: 2.5rem;
-  }
-  
-  .page-description {
-    font-size: 1rem;
-  }
-  
-  .about-image {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    
-    .profile-photo {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  
-  .orbit-ring {
-    width: 240px;
-    height: 240px;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .values-section,
-  .fun-facts {
-    padding: 40px 20px;
-  }
-  
-  .values-grid,
-  .facts-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .timeline::before {
-    left: 15px;
-  }
-  
-  .timeline-item {
-    padding-left: 50px;
-    
-    .timeline-marker {
-      left: 5px;
-    }
-  }
-}
 
-@media (max-width: 640px) {
-  .page-title {
-    font-size: 2rem;
-  }
-  
   .about-image {
-    width: 150px;
-    height: 150px;
-    
-    .profile-photo {
-      width: 100%;
-      height: 100%;
-    }
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
   }
-  
-  .orbit-ring {
-    width: 190px;
-    height: 190px;
-    
-    .orbit-dot {
-      width: 8px;
-      height: 8px;
-    }
-  }
-  
+
   .section-title {
-    font-size: 1.75rem;
-  }
-  
-  .value-card,
-  .activity-card {
-    padding: 24px;
-  }
-  
-  .value-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-  }
-  
-  .story-paragraphs p {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
 }
 </style>
