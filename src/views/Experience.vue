@@ -1,95 +1,88 @@
 <template>
   <div class="experience">
     <div class="container">
+
       <!-- Hero Section -->
       <section class="experience-hero section">
-  <div class="hero-grid">
-    
-    <div class="hero-left fade-in-left">
-      <h1 class="page-title">Professional Experience</h1>
-
-     <p class="page-description">
-  I'm a fresher actively seeking full-time opportunities in software development, 
-  backed by hands-on experience from internships and real-world projects. I’ve built 
-  applications, worked on practical problems, and understood how to turn ideas into 
-  functional solutions.
-</p>
-
-<p class="page-description">
-  Through my projects and experience, I’ve developed a strong interest in full-stack 
-  development and enjoy working across both frontend and backend. I focus on writing 
-  clean code, building user-friendly interfaces, and creating efficient systems.
-</p>
-
-<p class="page-description">
-  I’m driven to learn, grow, and take on new challenges. I enjoy working in collaborative 
-  environments and aim to contribute to meaningful projects while continuously improving 
-  my skills as a developer.
-</p>
-    </div>
-
-    <div class="hero-right fade-in-right">
-      <div class="experience-visual">
-        <i class="fas fa-briefcase"></i>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-
-
-     <!-- Work Experience -->
-<section class="work-experience section">
-  <h2 class="section-title fade-in-up">Work Experience</h2>
-
-  <div class="single-experience fade-in-up">
-    <div class="experience-card">
-
-      <div class="experience-header">
-        <div class="company-info">
-          <h3 class="job-title">{{ workExperience.title }}</h3>
-          <h4 class="company-name">{{ workExperience.company }}</h4>
-          <div class="job-period">{{ workExperience.period }}</div>
+        <div class="hero-grid">
+          <div class="hero-left fade-in-left">
+            <h1 class="page-title">Professional Experience</h1>
+            <p class="page-description">
+              I'm a fresher actively seeking full-time opportunities in software development,
+              backed by hands-on experience from internships and real-world projects. I've built
+              applications, worked on practical problems, and understood how to turn ideas into
+              functional solutions.
+            </p>
+            <p class="page-description">
+              Through my projects and experience, I've developed a strong interest in full-stack
+              development and enjoy working across both frontend and backend. I focus on writing
+              clean code, building user-friendly interfaces, and creating efficient systems.
+            </p>
+          </div>
+          <div class="hero-right fade-in-right">
+            <div class="experience-visual">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="company-logo">
-          <i :class="workExperience.icon"></i>
+      <!-- Work Experience Timeline -->
+      <section class="work-experience section">
+        <h2 class="section-title fade-in-up">Work Experience</h2>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item fade-in-up" v-for="(job, index) in workExperiences" :key="index">
+            <div class="timeline-dot">
+              <i :class="job.icon"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="card-header">
+                <div class="card-logo">
+                  <i :class="job.icon"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3 class="job-title">{{ job.title }}</h3>
+                  <h4 class="company-name">
+                    <i class="fas fa-building"></i> {{ job.company }}
+                  </h4>
+                  <span class="job-type-badge">{{ job.type }}</span>
+                  <span class="location-chip"><i class="fas fa-map-marker-alt"></i> {{ job.location }}</span>
+                </div>
+                <div class="timeline-date">
+                  <i class="fas fa-calendar-alt"></i> {{ job.period }}
+                </div>
+              </div>
+              <ul class="responsibilities">
+                <li v-for="item in job.responsibilities" :key="item">
+                  <span class="bullet"><i class="fas fa-chevron-right"></i></span>{{ item }}
+                </li>
+              </ul>
+              <div class="tech-stack">
+                <span v-for="tech in job.technologies" :key="tech" class="tech-tag">{{ tech }}</span>
+              </div>
+            </div>
+          </div>
+
+
         </div>
-      </div>
-
-      <div class="job-description">
-        <ul>
-          <li v-for="item in workExperience.responsibilities" :key="item">
-            {{ item }}
-          </li>
-        </ul>
-      </div>
-
-      <div class="job-technologies">
-        <span v-for="tech in workExperience.technologies" :key="tech" class="tech-tag">
-          {{ tech }}
-        </span>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       <!-- Education -->
       <section class="education section">
         <h2 class="section-title fade-in-up">Education</h2>
         <div class="education-grid">
           <div class="education-card fade-in-up" v-for="edu in education" :key="edu.id">
-            <div class="education-icon">
-              <i :class="edu.icon"></i>
-            </div>
+            <div class="education-icon"><i :class="edu.icon"></i></div>
             <div class="education-content">
               <h3 class="degree-title">{{ edu.degree }}</h3>
               <h4 class="institution-name">{{ edu.institution }}</h4>
-              <div class="education-period">{{ edu.period }}</div>
+              <div class="edu-chips">
+                <span class="edu-period-chip"><i class="fas fa-clock"></i> {{ edu.period }}</span>
+                <span class="location-chip"><i class="fas fa-map-marker-alt"></i> {{ edu.location }}</span>
+              </div>
               <p class="education-description">{{ edu.description }}</p>
             </div>
           </div>
@@ -98,39 +91,24 @@
 
       <!-- Certifications -->
       <section class="certifications section">
-        <h2 class="section-title fade-in-up">Certifications & Achievements</h2>
+        <h2 class="section-title fade-in-up">Achievements</h2>
         <div class="certifications-grid">
           <div class="certification-card fade-in-up" v-for="cert in certifications" :key="cert.id">
-            <div class="cert-icon">
-              <i :class="cert.icon"></i>
-            </div>
+            <div class="cert-icon"><i :class="cert.icon"></i></div>
             <div class="cert-content">
-              <h3 class="cert-title">{{ cert.title }}</h3>
-              <p class="cert-issuer">{{ cert.issuer }}</p>
-              <div class="cert-date">{{ cert.date }}</div>
-            </div>
-            <div class="cert-badge">
-              <i class="fas fa-certificate"></i>
-            </div>
+                <h3 class="cert-title">{{ cert.title }}</h3>
+                <div class="cert-badge"><i class="fas fa-certificate"></i></div>
+              </div>
+              <p class="cert-issuer"><i class="fas fa-building"></i> {{ cert.issuer }}</p>
+              <div class="cert-footer">
+                <span class="cert-date-chip"><i class="fas fa-calendar-alt"></i> {{ cert.date }}</span>
+                <span class="cert-verified"><i class="fas fa-check-circle"></i> Verified</span>
+              </div>
           </div>
         </div>
       </section>
 
-      <!-- Skills Progress -->
-      <section class="skills-progress section">
-        <h2 class="section-title fade-in-up">Professional Growth</h2>
-        <div class="skills-chart">
-          <div class="skill-item fade-in-right" v-for="skill in skillsProgress" :key="skill.name">
-            <div class="skill-info">
-              <span class="skill-name">{{ skill.name }}</span>
-              <span class="skill-percentage">{{ skill.level }}%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
   </div>
 </template>
@@ -138,30 +116,47 @@
 <script>
 export default {
   name: 'Experience',
-
   data() {
     return {
-      /* ✅ SINGLE REAL EXPERIENCE */
-      workExperience: {
-        title: "Software Development Engineer Intern",
-        company: "Yuma Energy",
-        period: "June 2025 - December 2025",
-        icon: "fas fa-building",
-        responsibilities: [
-          "Developed and improved features for web applications",
-          "Worked on frontend and backend integration",
-          "Collaborated with team members to deliver project tasks",
-          "Gained hands-on experience in real-world development workflows"
-        ],
-        technologies: ["React","Vue","MySQL", "Node.js", "MongoDB"]
-      },
-
-      /* ✅ EDUCATION (keep yours or modify) */
+      workExperiences: [
+        {
+          title: "Software Development Engineer Intern",
+          company: "Yuma Energy",
+          location: "Bengaluru, Karnataka",
+          period: "June 2025 - Dec 2025",
+          type: "Internship",
+          icon: "fas fa-laptop-code",
+          responsibilities: [
+            "Developed and improved features for web applications",
+            "Worked on frontend and backend integration",
+            "Collaborated with team members to deliver project tasks",
+            "Gained hands-on experience in real-world development workflows"
+          ],
+          technologies: ["React", "Vue", "MySQL", "Node.js", "NestJs", "MongoDB"]
+        },
+    
+        {
+          title: "Director of Club Service",
+          company: "Rotaract Club of Coimbatore Institute of Technology",
+          location: "Coimbatore, Tamilnadu",
+          period: "Jan 2024 - June 2025",
+          type: "Director",
+          icon: "fas fa-users",
+          responsibilities: [
+            "Organized events and initiatives to strengthen connections within the club",
+            "Fostered community engagement and encouraged active member participation",
+            "Led service projects that created a positive impact on the local community",
+            "Coordinated with team leads to ensure smooth execution of club activities"
+          ],
+          technologies: ["Adobe Photoshop", "Teamwork", "Adaptability", "Organization Skills", "Communication"]
+        }
+      ],
       education: [
         {
           id: 1,
-          degree: 'MSc Integrated Software Systems',
+          degree: 'M.Sc Software Systems (Integrated)',
           institution: 'Coimbatore Institute of Technology',
+          location: 'Coimbatore, Tamilnadu',
           period: '2022 - Present',
           icon: 'fas fa-graduation-cap',
           description: 'Focused on software development, problem-solving, and building real-world applications.'
@@ -169,91 +164,61 @@ export default {
         {
           id: 2,
           degree: 'Higher Secondary Education',
-          institution: 'Little Flower Convent Matric Hr Sec School',
+          institution: 'Little Flower Convent Matriculation Higher Secondary School',
+          location: 'Tirupur, Tamilnadu',
           period: 'Completed',
           icon: 'fas fa-school',
           description: 'Built a strong academic foundation and developed interest in technology.'
         }
       ],
-
-      /* ✅ CERTIFICATIONS (edit if needed) */
       certifications: [
-        {
-          id: 1,
-          title: 'Code Forge Series Winner',
-          issuer: 'SDC CIT',
-          date: '2025',
-          icon: 'fas fa-trophy'
-        },
-        {
-          id: 2,
-          title: 'CODEVORTEX Hackathon Recognition',
-          issuer: 'CIT Computing Association',
-          date: '2025',
-          icon: 'fas fa-medal'
-        }
+        { id: 1, title: 'Code Forge Series Winner', issuer: 'SDC CIT', date: '2025', icon: 'fas fa-trophy' },
+        { id: 2, title: 'CODEVORTEX Hackathon Recognition', issuer: 'CIT Computing Association', date: '2025', icon: 'fas fa-medal' }
       ],
 
-      /* ✅ SKILLS (realistic for fresher) */
-      skillsProgress: [
-        { name: 'JavaScript', level: 80 },
-        { name: 'React.js', level: 75 },
-        { name: 'Node.js', level: 70 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'Problem Solving', level: 85 }
-      ]
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.experience {
-  padding-top: 80px;
-}
+.experience { padding-top: 80px; }
 
+/* ── Hero ── */
 .experience-hero {
-  min-height: 40vh;
+  min-height: 35vh;
   display: flex;
   align-items: flex-start;
-  padding: 10px 0 0; /* remove bottom space */
+  padding: 10px 0 0;
 }
 
-/* GRID */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px; /* reduced from 80px → tighter */
+  gap: 50px;
   align-items: center;
 }
 
-/* LEFT */
-.hero-left {
-  animation: fadeInLeft 0.8s ease-out;
-}
+.hero-left { animation: fadeInLeft 0.8s ease-out; }
 
-/* TITLE */
 .page-title {
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   line-height: 1.1;
-
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* DESCRIPTION */
 .page-description {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 14px; /* tighter */
+  margin-bottom: 12px;
 }
 
-/* RIGHT */
 .hero-right {
   display: flex;
   justify-content: center;
@@ -261,494 +226,590 @@ export default {
   animation: fadeInRight 0.8s ease-out;
 }
 
-/* ICON (important polish) */
 .experience-visual {
-  font-size: 80px;
-  color: rgba(139, 92, 246, 0.7);
-  background: rgba(139, 92, 246, 0.08);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
-}
-
-.experience-visual {
-  width: 250px;
-  height: 250px;
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-  border-radius: 20px;
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, var(--primary), #8B5CF6);
+  border-radius: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 80px;
+  font-size: 60px;
   color: white;
   animation: float 3s ease-in-out infinite;
+  box-shadow: 0 16px 50px rgba(99, 102, 241, 0.3);
 }
 
-.work-experience {
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .experience-timeline {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      left: 30px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--primary-purple), var(--secondary-purple));
-    }
-    
-    .experience-item {
-      position: relative;
-      padding-left: 80px;
-      margin-bottom: 50px;
-      
-      .experience-marker {
-        position: absolute;
-        left: 18px;
-        top: 20px;
-        
-        .experience-dot {
-          width: 24px;
-          height: 24px;
-          background: var(--primary-purple);
-          border-radius: 50%;
-          border: 4px solid var(--bg-primary);
-          box-shadow: 0 0 0 4px var(--primary-purple);
-        }
-      }
-      
-      .experience-card {
-        background: var(--bg-card);
-        border-radius: 16px;
-        padding: 32px;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border-color);
-        transition: all 0.3s ease;
-        
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: var(--shadow-lg);
-        }
-        
-        .experience-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 24px;
-          
-          .company-info {
-            .job-title {
-              font-size: 1.5rem;
-              font-weight: 600;
-              color: var(--text-primary);
-              margin-bottom: 8px;
-            }
-            
-            .company-name {
-              font-size: 1.1rem;
-              color: var(--primary-purple);
-              font-weight: 500;
-              margin-bottom: 8px;
-            }
-            
-            .job-period {
-              color: var(--text-secondary);
-              font-size: 0.9rem;
-              font-weight: 500;
-            }
-          }
-          
-          .company-logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-          }
-        }
-        
-        .job-description {
-          margin-bottom: 24px;
-          
-          ul {
-            list-style: none;
-            
-            li {
-              color: var(--text-secondary);
-              line-height: 1.6;
-              margin-bottom: 8px;
-              position: relative;
-              padding-left: 20px;
-              
-              &::before {
-                content: '▸';
-                position: absolute;
-                left: 0;
-                color: var(--primary-purple);
-                font-weight: bold;
-              }
-            }
-          }
-        }
-        
-        .job-technologies {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          
-          .tech-tag {
-            background: var(--light-purple);
-            color: var(--dark-purple);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            
-            .dark-theme & {
-              background: rgba(139, 92, 246, 0.2);
-              color: var(--accent-purple);
-            }
-          }
-        }
-      }
-    }
+/* ── Section Title ── */
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 44px;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    margin: 10px auto 0;
   }
 }
 
+/* ══════════════════════════════════════
+   TIMELINE — compact
+══════════════════════════════════════ */
+.timeline {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 16px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 50px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--primary) 8%,
+    #8B5CF6 50%,
+    var(--accent) 92%,
+    transparent
+  );
+  border-radius: 2px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(5px);
+    opacity: 0.45;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+/* Compact dot */
+.timeline-dot {
+  position: relative;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 0 14px rgba(99, 102, 241, 0.45);
+  margin-bottom: 8px;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 0 14px rgba(99, 102, 241, 0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.12), 0 0 24px rgba(99, 102, 241, 0.55); }
+}
+
+/* Date badge — inside card header, right side */
+.timeline-date {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: var(--primary-light);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* Compact card */
+.timeline-card {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px 18px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--border-color);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid var(--bg-card);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.35);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+  }
+}
+
+/* Compact card header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.card-title-group { flex: 1; }
+
+.job-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.company-name {
+  font-size: 0.82rem;
+  color: var(--primary-light);
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.job-type-badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-light);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-right: 6px;
+}
+
+.location-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #F87171;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* Compact responsibilities */
+.responsibilities {
+  list-style: none;
+  margin-bottom: 10px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 4px;
+    padding: 5px 8px;
+    border-radius: 7px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(99, 102, 241, 0.05);
+    }
+  }
+}
+
+.bullet {
+  color: var(--primary-light);
+  font-size: 0.6rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Compact tech tags */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tech-tag {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: var(--primary-light);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.18);
+  }
+}
+
+/* Timeline end */
+.timeline-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.end-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.end-label {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+/* ── Education ── */
 .education {
   background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 40px 32px;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.education-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), #8B5CF6, var(--accent));
+    border-radius: 16px 16px 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.12), transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.18);
+
+    &::after { opacity: 1; }
+    .education-icon { transform: scale(1.08); }
+  }
+}
+
+.education-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--primary), #8B5CF6);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+  transition: transform 0.3s ease;
+}
+
+.degree-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.institution-name { color: var(--primary-light); font-weight: 500; font-size: 0.875rem; margin-bottom: 4px; }
+.education-period { color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+.education-location { color: var(--text-tertiary); font-size: 0.8rem; margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+
+.edu-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.edu-period-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-light);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
   border-radius: 20px;
-  padding: 60px 40px;
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
+}
+.education-description { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.55; }
+
+/* ── Certifications ── */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.certification-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), #8B5CF6, var(--accent));
+    border-radius: 16px 16px 0 0;
   }
-  
-  .education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 32px;
-    
-    .education-card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      display: flex;
-      gap: 24px;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-      }
-      
-      .education-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        color: white;
-        flex-shrink: 0;
-      }
-      
-      .education-content {
-        .degree-title {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 8px;
-        }
-        
-        .institution-name {
-          color: var(--primary-purple);
-          font-weight: 500;
-          margin-bottom: 8px;
-        }
-        
-        .education-period {
-          color: var(--text-secondary);
-          font-size: 0.9rem;
-          margin-bottom: 12px;
-        }
-        
-        .education-description {
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
-      }
-    }
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.18);
+
+    .cert-glow { opacity: 1; }
+    .cert-icon { transform: scale(1.08); }
   }
 }
 
-.certifications {
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    
-    .certification-card {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        transform: translateX(5px);
-        box-shadow: var(--shadow-lg);
-      }
-      
-      .cert-icon {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: white;
-        flex-shrink: 0;
-      }
-      
-      .cert-content {
-        flex: 1;
-        
-        .cert-title {
-          font-size: 1.1rem;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
-        }
-        
-        .cert-issuer {
-          color: var(--text-secondary);
-          font-size: 0.9rem;
-          margin-bottom: 4px;
-        }
-        
-        .cert-date {
-          color: var(--primary-purple);
-          font-size: 0.875rem;
-          font-weight: 500;
-        }
-      }
-      
-      .cert-badge {
-        color: var(--primary-purple);
-        font-size: 24px;
-      }
-    }
-  }
+/* background glow blob */
+.cert-glow {
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
+.cert-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary), #8B5CF6);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+  transition: transform 0.3s ease;
+}
+
+.cert-badge {
+  font-size: 22px;
+  background: linear-gradient(135deg, #F59E0B, #FBBF24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(245, 158, 11, 0.4));
+}
+
+.cert-content { flex: 1; }
+
+.cert-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.cert-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.cert-issuer {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cert-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cert-date-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: var(--primary-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.cert-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ── Skills ── */
 .skills-progress {
   background: var(--bg-secondary);
-  border-radius: 20px;
-  padding: 60px 40px;
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .skills-chart {
-    max-width: 600px;
-    margin: 0 auto;
-    
-    .skill-item {
-      margin-bottom: 32px;
-      
-      .skill-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
-        
-        .skill-name {
-          font-weight: 600;
-          color: var(--text-primary);
-        }
-        
-        .skill-percentage {
-          color: var(--primary-purple);
-          font-weight: 600;
-        }
-      }
-      
-      .skill-bar {
-        height: 8px;
-        background: var(--border-color);
-        border-radius: 4px;
-        overflow: hidden;
-        
-        .skill-progress {
-          height: 100%;
-          background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-          border-radius: 4px;
-          transition: width 1s ease-in-out;
-        }
-      }
-    }
-  }
+  border-radius: 16px;
+  padding: 40px 32px;
 }
 
+.skills-chart { max-width: 520px; margin: 0 auto; }
+
+.skill-item { margin-bottom: 22px; }
+
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.skill-name { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
+.skill-percentage { color: var(--primary-light); font-weight: 700; font-size: 0.85rem; }
+
+.skill-bar { height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden; }
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #8B5CF6);
+  border-radius: 3px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Responsive ── */
 @media (max-width: 968px) {
-  .experience-hero {
-    padding-top: 80px;
-    min-height: auto;
-  }
-  
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
-  
-  .page-title {
-    font-size: 2.5rem;
-  }
-  
-  .page-description {
-    font-size: 1rem;
-  }
-  
-  .experience-visual {
-    width: 200px;
-    height: 200px;
-    font-size: 64px;
-    margin: 0 auto;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .experience-timeline::before {
-    left: 15px;
-  }
-  
-  .experience-item {
-    padding-left: 50px;
-    margin-bottom: 40px;
-    
-    .experience-marker {
-      left: 3px;
-    }
-  }
-  
-  .experience-card {
-    padding: 24px;
-    
-    .experience-header {
-      flex-direction: column;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    
-    .company-logo {
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-    }
-  }
-  
-  .education-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  
-  .education-card {
-    flex-direction: column;
-    text-align: center;
-    padding: 24px;
-  }
-  
-  .education-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    margin: 0 auto;
-  }
-  
-  .certifications-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .education,
-  .skills-progress {
-    padding: 40px 20px;
-  }
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+  .experience-visual { width: 150px; height: 150px; font-size: 50px; margin: 0 auto; }
+  .timeline-line { left: 20px; transform: none; }
+  .timeline-item { align-items: flex-start; padding-left: 56px; }
+  .timeline-dot { position: absolute; left: 0; top: 0; margin-bottom: 0; }
+  .timeline-card { &::before, &::after { left: 20px; transform: none; } }
+  .education-grid { grid-template-columns: 1fr; }
+  .education-card { flex-direction: column; }
+  .education-icon { margin: 0 auto; }
+  .education, .skills-progress { padding: 30px 18px; }
 }
 
 @media (max-width: 640px) {
-  .page-title {
-    font-size: 2rem;
-  }
-  
-  .experience-visual {
-    width: 150px;
-    height: 150px;
-    font-size: 48px;
-  }
-  
-  .section-title {
-    font-size: 1.75rem;
-  }
-  
-  .experience-card {
-    padding: 20px;
-  }
-  
-  .job-title {
-    font-size: 1.25rem;
-  }
-  
-  .job-description ul li {
-    font-size: 0.9375rem;
-  }
-  
-  .certification-card {
-    padding: 20px;
-  }
+  .page-title { font-size: 1.8rem; }
+  .timeline-card { padding: 14px; }
+  .card-header { gap: 10px; }
+  .section-title { font-size: 1.5rem; }
 }
 </style>
