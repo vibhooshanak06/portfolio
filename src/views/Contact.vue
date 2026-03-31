@@ -67,7 +67,7 @@
                 </div>
                 <div class="method-info">
                   <h3>Email</h3>
-                  <p>hello@johndoe.dev</p>
+                  <p>vibhooshanak06@gmail.com</p>
                 </div>
               </div>
               
@@ -77,7 +77,7 @@
                 </div>
                 <div class="method-info">
                   <h3>Phone</h3>
-                  <p>+1 (555) 123-4567</p>
+                  <p>+91 86101 83139</p>
                 </div>
               </div>
               
@@ -87,7 +87,7 @@
                 </div>
                 <div class="method-info">
                   <h3>Location</h3>
-                  <p>New York, NY</p>
+                  <p>Coimbatore, Tamilnadu</p>
                 </div>
               </div>
             </div>
@@ -203,16 +203,17 @@ export default {
 }
 
 .contact-visual {
-  width: 250px;
-  height: 250px;
-  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
-  border-radius: 20px;
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, var(--primary), #8B5CF6);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 80px;
+  font-size: 42px;
   color: white;
   animation: float 3s ease-in-out infinite;
+  box-shadow: 0 0 0 12px rgba(99, 102, 241, 0.1), 0 16px 40px rgba(99, 102, 241, 0.3);
 }
 
 .contact-content {
@@ -409,9 +410,9 @@ export default {
   }
   
   .contact-visual {
-    width: 200px;
-    height: 200px;
-    font-size: 64px;
+    width: 90px;
+    height: 90px;
+    font-size: 34px;
     margin: 0 auto;
   }
   
@@ -436,9 +437,9 @@ export default {
   }
   
   .contact-visual {
-    width: 150px;
-    height: 150px;
-    font-size: 48px;
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
   }
   
   .form-title,

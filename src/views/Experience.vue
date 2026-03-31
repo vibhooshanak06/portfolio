@@ -30,10 +30,8 @@
       <!-- Work Experience Timeline -->
       <section class="work-experience section">
         <h2 class="section-title fade-in-up">Work Experience</h2>
-
         <div class="timeline">
           <div class="timeline-line"></div>
-
           <div class="timeline-item fade-in-up" v-for="(job, index) in workExperiences" :key="index">
             <div class="timeline-dot">
               <i :class="job.icon"></i>
@@ -65,8 +63,6 @@
               </div>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -89,13 +85,15 @@
         </div>
       </section>
 
-      <!-- Certifications -->
+      <!-- Achievements -->
       <section class="certifications section">
         <h2 class="section-title fade-in-up">Achievements</h2>
         <div class="certifications-grid">
           <div class="certification-card fade-in-up" v-for="cert in certifications" :key="cert.id">
+            <div class="cert-glow"></div>
             <div class="cert-icon"><i :class="cert.icon"></i></div>
             <div class="cert-content">
+              <div class="cert-top-row">
                 <h3 class="cert-title">{{ cert.title }}</h3>
                 <div class="cert-badge"><i class="fas fa-certificate"></i></div>
               </div>
@@ -104,10 +102,10 @@
                 <span class="cert-date-chip"><i class="fas fa-calendar-alt"></i> {{ cert.date }}</span>
                 <span class="cert-verified"><i class="fas fa-check-circle"></i> Verified</span>
               </div>
+            </div>
           </div>
         </div>
       </section>
-
 
     </div>
   </div>
@@ -134,7 +132,6 @@ export default {
           ],
           technologies: ["React", "Vue", "MySQL", "Node.js", "NestJs", "MongoDB"]
         },
-    
         {
           title: "Director of Club Service",
           company: "Rotaract Club of Coimbatore Institute of Technology",
@@ -174,8 +171,7 @@ export default {
       certifications: [
         { id: 1, title: 'Code Forge Series Winner', issuer: 'SDC CIT', date: '2025', icon: 'fas fa-trophy' },
         { id: 2, title: 'CODEVORTEX Hackathon Recognition', issuer: 'CIT Computing Association', date: '2025', icon: 'fas fa-medal' }
-      ],
-
+      ]
     }
   }
 }
@@ -227,17 +223,17 @@ export default {
 }
 
 .experience-visual {
-  width: 180px;
-  height: 180px;
+  width: 110px;
+  height: 110px;
   background: linear-gradient(135deg, var(--primary), #8B5CF6);
-  border-radius: 22px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
+  font-size: 42px;
   color: white;
   animation: float 3s ease-in-out infinite;
-  box-shadow: 0 16px 50px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 0 12px rgba(99, 102, 241, 0.1), 0 16px 40px rgba(99, 102, 241, 0.3);
 }
 
 /* ── Section Title ── */
@@ -260,9 +256,7 @@ export default {
   }
 }
 
-/* ══════════════════════════════════════
-   TIMELINE — compact
-══════════════════════════════════════ */
+/* ── Timeline ── */
 .timeline {
   position: relative;
   max-width: 640px;
@@ -274,17 +268,10 @@ export default {
   position: absolute;
   left: 50%;
   top: 0;
-  bottom: 50px;
+  bottom: 0;
   width: 2px;
   transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--primary) 8%,
-    #8B5CF6 50%,
-    var(--accent) 92%,
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, var(--primary) 8%, #8B5CF6 50%, var(--accent) 92%, transparent);
   border-radius: 2px;
 
   &::after {
@@ -305,7 +292,6 @@ export default {
   margin-bottom: 14px;
 }
 
-/* Compact dot */
 .timeline-dot {
   position: relative;
   z-index: 2;
@@ -318,7 +304,6 @@ export default {
   justify-content: center;
   font-size: 14px;
   color: white;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 0 14px rgba(99, 102, 241, 0.45);
   margin-bottom: 8px;
   animation: pulse-glow 2.5s ease-in-out infinite;
 }
@@ -328,7 +313,6 @@ export default {
   50%       { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.12), 0 0 24px rgba(99, 102, 241, 0.55); }
 }
 
-/* Date badge — inside card header, right side */
 .timeline-date {
   margin-left: auto;
   display: inline-flex;
@@ -346,7 +330,6 @@ export default {
   align-self: flex-start;
 }
 
-/* Compact card */
 .timeline-card {
   width: 100%;
   background: var(--bg-card);
@@ -385,7 +368,6 @@ export default {
   }
 }
 
-/* Compact card header */
 .card-header {
   display: flex;
   align-items: center;
@@ -452,10 +434,8 @@ export default {
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 20px;
-  letter-spacing: 0.03em;
 }
 
-/* Compact responsibilities */
 .responsibilities {
   list-style: none;
   margin-bottom: 10px;
@@ -472,9 +452,7 @@ export default {
     border-radius: 7px;
     transition: background 0.2s;
 
-    &:hover {
-      background: rgba(99, 102, 241, 0.05);
-    }
+    &:hover { background: rgba(99, 102, 241, 0.05); }
   }
 }
 
@@ -485,7 +463,6 @@ export default {
   flex-shrink: 0;
 }
 
-/* Compact tech tags */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -502,40 +479,7 @@ export default {
   font-weight: 500;
   transition: background 0.2s;
 
-  &:hover {
-    background: rgba(99, 102, 241, 0.18);
-  }
-}
-
-/* Timeline end */
-.timeline-end {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.end-dot {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: white;
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
-  position: relative;
-  z-index: 2;
-}
-
-.end-label {
-  font-size: 0.78rem;
-  color: var(--text-tertiary);
-  font-style: italic;
-  letter-spacing: 0.04em;
+  &:hover { background: rgba(99, 102, 241, 0.18); }
 }
 
 /* ── Education ── */
@@ -610,9 +554,7 @@ export default {
 }
 
 .degree-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-.institution-name { color: var(--primary-light); font-weight: 500; font-size: 0.875rem; margin-bottom: 4px; }
-.education-period { color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
-.education-location { color: var(--text-tertiary); font-size: 0.8rem; margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+.institution-name { color: var(--primary-light); font-weight: 500; font-size: 0.875rem; margin-bottom: 8px; }
 
 .edu-chips {
   display: flex;
@@ -633,9 +575,10 @@ export default {
   padding: 2px 8px;
   border-radius: 20px;
 }
+
 .education-description { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.55; }
 
-/* ── Certifications ── */
+/* ── Achievements ── */
 .certifications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -674,7 +617,6 @@ export default {
   }
 }
 
-/* background glow blob */
 .cert-glow {
   position: absolute;
   top: -30px; right: -30px;
@@ -723,7 +665,6 @@ export default {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 6px;
   line-height: 1.35;
 }
 
@@ -733,12 +674,12 @@ export default {
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-bottom: 10px;
 }
 
 .cert-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 8px;
 }
 
@@ -768,34 +709,10 @@ export default {
   border-radius: 20px;
 }
 
-/* ── Skills ── */
-.skills-progress {
-  background: var(--bg-secondary);
-  border-radius: 16px;
-  padding: 40px 32px;
-}
-
-.skills-chart { max-width: 520px; margin: 0 auto; }
-
-.skill-item { margin-bottom: 22px; }
-
-.skill-info { display: flex; justify-content: space-between; margin-bottom: 6px; }
-.skill-name { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
-.skill-percentage { color: var(--primary-light); font-weight: 700; font-size: 0.85rem; }
-
-.skill-bar { height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden; }
-
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), #8B5CF6);
-  border-radius: 3px;
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* ── Responsive ── */
 @media (max-width: 968px) {
   .hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-  .experience-visual { width: 150px; height: 150px; font-size: 50px; margin: 0 auto; }
+  .experience-visual { width: 90px; height: 90px; font-size: 34px; margin: 0 auto; }
   .timeline-line { left: 20px; transform: none; }
   .timeline-item { align-items: flex-start; padding-left: 56px; }
   .timeline-dot { position: absolute; left: 0; top: 0; margin-bottom: 0; }
@@ -803,7 +720,7 @@ export default {
   .education-grid { grid-template-columns: 1fr; }
   .education-card { flex-direction: column; }
   .education-icon { margin: 0 auto; }
-  .education, .skills-progress { padding: 30px 18px; }
+  .education { padding: 30px 18px; }
 }
 
 @media (max-width: 640px) {

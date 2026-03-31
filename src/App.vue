@@ -19,10 +19,6 @@
         <Skills />
       </section>
       
-      <section id="interests" class="page-section">
-        <Interests />
-      </section>
-      
       <section id="projects" class="page-section">
         <Projects />
       </section>
@@ -42,7 +38,6 @@ import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Experience from './views/Experience.vue'
 import Skills from './views/Skills.vue'
-import Interests from './views/Interests.vue'
 import Projects from './views/Projects.vue'
 import Contact from './views/Contact.vue'
 
@@ -55,7 +50,6 @@ export default {
     About,
     Experience,
     Skills,
-    Interests,
     Projects,
     Contact
   },

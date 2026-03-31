@@ -150,12 +150,7 @@ export default {
           items: ['CI/CD', 'Jenkins', 'Nginx', 'PM2', 'Vercel', 'Netlify', 'GitHub Actions', 'VS Code']
         }
       ],
-      certifications: [
-        { name: 'AWS Certified Developer', issuer: 'Amazon Web Services', year: '2024', icon: 'fab fa-aws' },
-        { name: 'Vue.js Certification', issuer: 'Vue School', year: '2023', icon: 'fab fa-vuejs' },
-        { name: 'Full Stack Development', issuer: 'freeCodeCamp', year: '2023', icon: 'fas fa-certificate' },
-        { name: 'JavaScript Algorithms', issuer: 'Coursera', year: '2022', icon: 'fab fa-js-square' }
-      ]
+      certifications: []
     }
   }
 }
@@ -186,23 +181,6 @@ export default {
   animation: fadeInLeft 0.8s ease-out;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  border-radius: 24px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-  
-  .badge-icon {
-    font-size: 16px;
-  }
-}
-
 .page-title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
@@ -222,33 +200,6 @@ export default {
   line-height: 1.7;
   color: var(--text-tertiary);
   margin-bottom: 20px;
-}
-
-.stats-mini {
-  display: flex;
-  gap: 32px;
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border-color);
-}
-
-.stat-mini {
-  .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  
-  .stat-label {
-    font-size: 0.875rem;
-    color: var(--text-tertiary);
-    font-weight: 500;
-  }
 }
 
 // Right Side - Orbital Animation
@@ -287,14 +238,6 @@ export default {
   font-size: 40px;
   color: white;
   margin-bottom: 6px;
-}
-
-.center-text {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .pulse-ring {

@@ -12,7 +12,7 @@
           </h1>
           
           <h2 class="hero-subtitle">
-            Aspiring Software Developer Engineer
+            Aspiring Software Developement Engineer
           </h2>
           
           <p class="hero-description">

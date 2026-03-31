@@ -80,7 +80,7 @@ export default {
       }
     },
     updateActiveSection() {
-      const sections = ['home', 'about', 'experience', 'skills', 'interests', 'projects', 'contact']
+      const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact']
       const scrollPosition = window.scrollY + 150
       
       for (let i = sections.length - 1; i >= 0; i--) {
