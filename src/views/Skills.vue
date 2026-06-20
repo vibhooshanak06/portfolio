@@ -1,26 +1,26 @@
 <template>
   <div class="skills">
     <div class="container">
-      <!-- Hero Section with Two Columns -->
+
+      <!-- Hero Section -->
       <section class="skills-hero section">
         <div class="hero-grid">
+
           <!-- Left: Description -->
           <div class="hero-left">
             <h1 class="page-title">Skills & Technologies</h1>
             <p class="page-description">
-              I'm a full-stack developer with expertise in modern web technologies. 
-              My skill set spans across frontend frameworks, backend development, 
-              databases, and cloud infrastructure.
+              I'm a full-stack developer with hands-on experience in modern web
+              technologies — from crafting responsive UIs to building scalable
+              backend services and managing databases.
             </p>
             <p class="page-description">
-              I am deeply passionate about continuous learning and staying ahead of evolving
-  industry trends. By blending strong technical expertise with creative
-  problem-solving, I transform ideas into meaningful, high-quality digital
-  experiences that are both efficient and engaging.
-  </p>
-            
+              I'm passionate about continuous learning and staying current with
+              evolving industry trends, blending strong technical skills with
+              creative problem-solving to deliver meaningful digital experiences.
+            </p>
           </div>
-          
+
           <!-- Right: Orbital Animation -->
           <div class="hero-right">
             <div class="orbital-container">
@@ -28,18 +28,17 @@
                 <div class="center-icon">
                   <i class="fas fa-code"></i>
                 </div>
-          
                 <div class="pulse-ring"></div>
                 <div class="pulse-ring pulse-ring-2"></div>
               </div>
-              
-              <div 
-                class="orbital-item" 
-                v-for="(tool, index) in orbitalTools" 
+
+              <div
+                class="orbital-item"
+                v-for="(tool, index) in orbitalTools"
                 :key="tool.name"
-                :style="{ 
+                :style="{
                   '--orbit-angle': `${(-180 / orbitalTools.length) * index}deg`,
-                  '--item-index': index
+                  '--item-index': index,
                 }"
               >
                 <div class="orbital-icon">
@@ -49,124 +48,90 @@
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      <!-- Compact Tech Stack - Single View -->
-      <section class="tech-stack-compact section">
+      <!-- Tech Stack — flat tag list -->
+      <section class="tech-stack section">
         <div class="section-header">
-          <h2 class="section-title">Tech Stack Overview</h2>
-          <p class="section-subtitle">Technologies I work with daily</p>
+          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-subtitle">Technologies I work with</p>
         </div>
-        
-        <div class="tech-stack-grid">
-          <div 
-            class="tech-stack-item" 
-            v-for="category in techStack" 
-            :key="category.name"
-          >
-            <div class="tech-header">
-              <div class="tech-icon">
-                <i :class="category.icon"></i>
-              </div>
-              <h3 class="tech-category-name">{{ category.name }}</h3>
-            </div>
-            <div class="tech-list">
-              <span 
-                class="tech-tag" 
-                v-for="tech in category.items" 
-                :key="tech"
-              >
-                {{ tech }}
+
+        <div class="stack-groups">
+          <div class="stack-group" v-for="group in techStack" :key="group.label">
+            <span class="group-label">{{ group.label }}</span>
+            <div class="tag-list">
+              <span class="tech-tag" v-for="item in group.items" :key="item">
+                {{ item }}
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Certifications -->
-      <section class="certifications section">
-        <div class="section-header">
-          <h2 class="section-title">Certifications</h2>
-        </div>
-        
-        <div class="cert-grid">
-          <div 
-            class="cert-card" 
-            v-for="cert in certifications" 
-            :key="cert.name"
-          >
-            <div class="cert-badge">
-              <i :class="cert.icon"></i>
-            </div>
-            <h4 class="cert-name">{{ cert.name }}</h4>
-            <p class="cert-issuer">{{ cert.issuer }}</p>
-            <span class="cert-year">{{ cert.year }}</span>
-          </div>
-        </div>
-      </section>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Skills',
+  name: "Skills",
   data() {
     return {
       orbitalTools: [
-        { name: 'Vue.js', icon: 'fab fa-vuejs' },
-        { name: 'React', icon: 'fab fa-react' },
-        { name: 'Node.js', icon: 'fab fa-node-js' },
-        { name: 'Python', icon: 'fab fa-python' },
-        { name: 'MongoDB', icon: 'fas fa-database' },
-        { name: 'Docker', icon: 'fab fa-docker' },
-        { name: 'AWS', icon: 'fab fa-aws' },
-        { name: 'Git', icon: 'fab fa-git-alt' },
-        { name: 'Figma', icon: 'fab fa-figma' },
-        { name: 'TypeScript', icon: 'fas fa-code' },
-        { name: 'PostgreSQL', icon: 'fas fa-database' },
-        { name: 'JavaScript', icon: 'fab fa-js-square' }
+        { name: "Vue.js",      icon: "fab fa-vuejs" },
+        { name: "React",       icon: "fab fa-react" },
+        { name: "Node.js",     icon: "fab fa-node-js" },
+        { name: "Python",      icon: "fab fa-python" },
+        { name: "MongoDB",     icon: "fas fa-database" },
+        { name: "Docker",      icon: "fab fa-docker" },
+        { name: "Git",         icon: "fab fa-git-alt" },
+        { name: "JavaScript",  icon: "fab fa-js-square" },
+        { name: "C++",         icon: "fas fa-code" },
+        { name: "MySQL",       icon: "fas fa-database" },
+        { name: "Postman",     icon: "fas fa-paper-plane" },
+        { name: "Jenkins",     icon: "fas fa-cogs" },
       ],
       techStack: [
         {
-          name: 'Frontend',
-          icon: 'fas fa-laptop-code',
-          items: ['HTML5', 'CSS3', 'SCSS', 'Tailwind', 'Bootstrap', 'Material-UI', 'Ant Design', 'Responsive Design']
+          label: "Programming Languages",
+          items: ["C++", "Python", "JavaScript"],
         },
         {
-          name: 'Backend',
-          icon: 'fas fa-server',
-          items: ['Express.js', 'Nest.js', 'GraphQL', 'REST API', 'WebSocket', 'Microservices', 'JWT', 'OAuth']
+          label: "Frameworks",
+          items: ["React.js", "Vue.js", "Node.js", "Express.js", "NestJS", "FastAPI"],
         },
         {
-          name: 'Database',
-          icon: 'fas fa-database',
-          items: ['MySQL', 'Redis', 'Firebase', 'Supabase', 'Prisma', 'TypeORM', 'Mongoose', 'SQL']
+          label: "Databases",
+          items: ["MySQL", "MongoDB"],
         },
         {
-          name: 'DevOps & Tools',
-          icon: 'fas fa-cloud',
-          items: ['CI/CD', 'Jenkins', 'Nginx', 'PM2', 'Vercel', 'Netlify', 'GitHub Actions', 'VS Code']
-        }
+          label: "Tools",
+          items: ["Git & Github", "Docker", "Jenkins", "Postman", "VS Code","Kiro - AI AGENT"],
+        },
+        {
+          label: "Soft Skills",
+          items: ["Leadership", "Team Collaboration", "Adaptability",],
+        },
       ],
-      certifications: []
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
 .skills {
-  padding-top: 100px;
+  padding-top: 20px;
 }
 
-// Hero Section with Two Columns
+/* ── Hero ── */
 .skills-hero {
-  min-height: 90vh;
+  min-height: 20vh;
   display: flex;
   align-items: center;
-  padding: 60px 0;
+  padding: 20px 0 40px;
 }
 
 .hero-grid {
@@ -176,19 +141,16 @@ export default {
   align-items: center;
 }
 
-// Left Side - Description
 .hero-left {
   animation: fadeInLeft 0.8s ease-out;
 }
 
 .page-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 24px;
-  line-height: 1.1;
-  
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  line-height: 1.15;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -196,13 +158,13 @@ export default {
 }
 
 .page-description {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--text-tertiary);
-  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
 }
 
-// Right Side - Orbital Animation
+/* ── Orbital ── */
 .hero-right {
   display: flex;
   justify-content: center;
@@ -226,7 +188,6 @@ export default {
   background: var(--gradient-primary);
   border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
@@ -237,7 +198,6 @@ export default {
 .center-icon {
   font-size: 40px;
   color: white;
-  margin-bottom: 6px;
 }
 
 .pulse-ring {
@@ -252,10 +212,7 @@ export default {
   animation: pulse 2s ease-out infinite;
   opacity: 0;
 }
-
-.pulse-ring-2 {
-  animation-delay: 1s;
-}
+.pulse-ring-2 { animation-delay: 1s; }
 
 .orbital-item {
   position: absolute;
@@ -285,14 +242,14 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   animation: counterRotate 20s linear infinite;
   animation-delay: calc(var(--item-index) * -1.67s);
-  
+
   &:hover {
     background: var(--gradient-primary);
     border-color: var(--primary);
     color: white;
     transform: scale(1.2);
     box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
-    
+
     & + .orbital-tooltip {
       opacity: 1;
       visibility: visible;
@@ -322,409 +279,152 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-// Compact Tech Stack - Single View
-.tech-stack-compact {
-  padding: 80px 0;
+/* ── Tech Stack ── */
+.tech-stack {
+  padding: 60px 0 80px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
   letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-subtitle {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   color: var(--text-tertiary);
 }
 
-.tech-stack-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 1000px;
+.stack-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
-.tech-stack-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 24px;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-hover);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-    
-    .tech-icon {
-      transform: scale(1.1);
-      background: var(--gradient-primary);
-      
-      i {
-        color: white;
-      }
-    }
-  }
-}
-
-.tech-header {
+.stack-group {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-color);
+  align-items: flex-start;
+  gap: 20px;
 }
 
-.tech-icon {
-  width: 44px;
-  height: 44px;
-  background: var(--bg-tertiary);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  
-  i {
-    font-size: 20px;
-    color: var(--primary);
-    transition: color 0.3s ease;
-  }
-}
-
-.tech-category-name {
-  font-size: 1.125rem;
+.group-label {
+  min-width: 190px;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-top: 7px;
+  flex-shrink: 0;
 }
 
-.tech-list {
+.tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .tech-tag {
-  padding: 6px 12px;
-  background: var(--bg-tertiary);
+  padding: 6px 16px;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
+  border-radius: 20px;
+  font-size: 0.875rem;
   font-weight: 500;
-  transition: all 0.3s ease;
-  
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+  cursor: default;
+
   &:hover {
     background: var(--primary);
     border-color: var(--primary);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
   }
 }
 
-// Certifications
-.certifications {
-  background: var(--bg-secondary);
-  border-radius: 32px;
-  padding: 60px 40px;
-  margin-bottom: 60px;
-}
-
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
-}
-
-.cert-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 28px;
-  text-align: center;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2);
-    
-    .cert-badge {
-      transform: scale(1.1);
-      background: var(--gradient-accent);
-      
-      i {
-        color: white;
-      }
-    }
-  }
-}
-
-.cert-badge {
-  width: 64px;
-  height: 64px;
-  background: var(--bg-tertiary);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  transition: all 0.3s ease;
-  
-  i {
-    font-size: 28px;
-    color: var(--accent);
-    transition: color 0.3s ease;
-  }
-}
-
-.cert-name {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.cert-issuer {
-  font-size: 0.875rem;
-  color: var(--text-tertiary);
-  margin-bottom: 12px;
-}
-
-.cert-year {
-  display: inline-block;
-  padding: 4px 12px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.8125rem;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-// Animations
+/* ── Animations ── */
 @keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes float {
-  0%, 100% {
-    transform: translate(-50%, -50%) translateY(0);
-  }
-  50% {
-    transform: translate(-50%, -50%) translateY(-10px);
-  }
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%       { transform: translate(-50%, -50%) translateY(-10px); }
 }
-
 @keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0;
-  }
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
 }
-
 @keyframes orbit {
-  from {
-    transform: rotate(0deg) translateX(215px);
-  }
-  to {
-    transform: rotate(360deg) translateX(215px);
-  }
+  from { transform: rotate(0deg)   translateX(215px); }
+  to   { transform: rotate(360deg) translateX(215px); }
 }
-
 @keyframes counterRotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 
-// Responsive
+/* ── Responsive ── */
 @media (max-width: 1024px) {
-  .hero-grid {
-    gap: 60px;
-  }
-  
-  .orbital-container {
-    width: 450px;
-    height: 450px;
-  }
-  
+  .hero-grid { gap: 50px; }
+  .orbital-container { width: 420px; height: 420px; }
+
   @keyframes orbit {
-    from {
-      transform: rotate(0deg) translateX(190px);
-    }
-    to {
-      transform: rotate(360deg) translateX(190px);
-    }
+    from { transform: rotate(0deg)   translateX(180px); }
+    to   { transform: rotate(360deg) translateX(180px); }
   }
 }
 
-@media (max-width: 968px) {
-  .skills {
-    padding-top: 80px;
-  }
-  
-  .skills-hero {
-    min-height: auto;
-  }
-  
+@media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 60px;
-  }
-  
-  .hero-left {
+    gap: 40px;
     text-align: center;
   }
-  
-  .page-title {
-    font-size: 2.5rem;
+
+  .stack-group {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  .page-description {
-    font-size: 1rem;
-  }
-  
-  .stats-mini {
-    justify-content: center;
-  }
-  
-  .orbital-container {
-    width: 400px;
-    height: 400px;
-  }
-  
-  .tech-stack-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .certifications {
-    padding: 40px 20px;
-  }
-  
-  @keyframes orbit {
-    from {
-      transform: rotate(0deg) translateX(165px);
-    }
-    to {
-      transform: rotate(360deg) translateX(165px);
-    }
+
+  .group-label {
+    min-width: unset;
+    padding-top: 0;
   }
 }
 
 @media (max-width: 640px) {
-  .page-title {
-    font-size: 2rem;
-  }
-  
-  .page-description {
-    font-size: 0.9375rem;
-  }
-  
   .orbital-container {
     width: 100%;
-    max-width: 350px;
-    height: 350px;
+    max-width: 320px;
+    height: 320px;
   }
-  
-  .orbital-center {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .center-icon {
-    font-size: 32px;
-  }
-  
-  .center-text {
-    font-size: 0.75rem;
-  }
-  
-  .orbital-item {
-    width: 56px;
-    height: 56px;
-    margin: -28px 0 0 -28px;
-  }
-  
-  .orbital-icon {
-    width: 56px;
-    height: 56px;
-    font-size: 22px;
-  }
-  
-  .stats-mini {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .section-title {
-    font-size: 1.75rem;
-  }
-  
-  .tech-stack-item {
-    padding: 20px;
-  }
-  
-  .tech-category-name {
-    font-size: 1rem;
-  }
-  
-  .tech-tag {
-    font-size: 0.75rem;
-    padding: 5px 10px;
-  }
-  
-  .cert-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .cert-card {
-    padding: 24px;
-  }
-  
+  .orbital-center { width: 90px; height: 90px; }
+  .center-icon { font-size: 32px; }
+  .orbital-item { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+  .orbital-icon { width: 56px; height: 56px; font-size: 20px; }
+
   @keyframes orbit {
-    from {
-      transform: rotate(0deg) translateX(147px);
-    }
-    to {
-      transform: rotate(360deg) translateX(147px);
-    }
+    from { transform: rotate(0deg)   translateX(130px); }
+    to   { transform: rotate(360deg) translateX(130px); }
   }
 }
 </style>

@@ -2,17 +2,18 @@
   <div class="projects">
     <div class="container">
 
+      <!-- Hero -->
       <section class="projects-hero section">
         <div class="hero-grid">
           <div class="hero-left fade-in-left">
             <h1 class="page-title">My Projects</h1>
             <p class="page-description">
-              A curated collection of academic and personal projects that showcase my
-              technical skills and problem-solving abilities.
+              A curated collection of projects that showcase my technical skills
+              and problem-solving abilities across full-stack development and AI.
             </p>
             <p class="page-description">
-              Each project represents a unique challenge and learning opportunity,
-              demonstrating my commitment to building innovative solutions.
+              Each project represents a unique challenge — from AI-powered fraud
+              detection to full-scale insurance platforms.
             </p>
           </div>
           <div class="hero-right fade-in-right">
@@ -23,43 +24,56 @@
         </div>
       </section>
 
+      <!-- Projects -->
       <section class="projects-grid-section section">
-        <div class="projects-grid">
-          <div class="project-card fade-in-up" v-for="project in paginatedProjects" :key="project.id">
-            <div class="project-content">
-              <div class="project-header">
-                <div class="project-icon">
-                  <i :class="project.icon"></i>
-                </div>
-                <div class="project-title-group">
-                  <h3 class="project-title">{{ project.title }}</h3>
-                  <div class="project-links">
-                    <a v-if="project.github" :href="project.github" target="_blank" class="link-btn github-btn" title="GitHub">
-                      <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a v-if="project.live" :href="project.live" target="_blank" class="link-btn live-btn" title="Live Demo">
-                      <i class="fas fa-external-link-alt"></i> Live
-                    </a>
-                  </div>
-                </div>
+        <div class="projects-list">
+          <div
+            class="project-card fade-in-up"
+            v-for="project in projects"
+            :key="project.id"
+          >
+            <!-- Top bar -->
+            <div class="card-top">
+              <div class="card-icon">
+                <i :class="project.icon"></i>
               </div>
-              <p class="project-description">{{ project.description }}</p>
-              <div class="project-tech">
-                <span v-for="tech in project.technologies" :key="tech" class="tech-chip">{{ tech }}</span>
+              <div class="card-meta">
+                <h3 class="project-title">{{ project.title }}</h3>
+                <div class="project-links">
+                  <a
+                    v-if="project.github"
+                    :href="project.github"
+                    target="_blank"
+                    class="link-btn github-btn"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                  <a
+                    v-if="project.live"
+                    :href="project.live"
+                    target="_blank"
+                    class="link-btn live-btn"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Pagination -->
-        <div class="pagination">
-          <button class="page-btn" :disabled="currentPage === 1" @click="currentPage--">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
-          <button class="page-btn" :disabled="currentPage === totalPages" @click="currentPage++">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+            <!-- Bullets -->
+            <ul class="project-bullets">
+              <li v-for="(point, i) in project.bullets" :key="i">{{ point }}</li>
+            </ul>
+
+            <!-- Tech stack -->
+            <div class="project-tech">
+              <span
+                v-for="tech in project.technologies"
+                :key="tech"
+                class="tech-chip"
+              >{{ tech }}</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -72,69 +86,46 @@ export default {
   name: 'Projects',
   data() {
     return {
-      currentPage: 1,
-      perPage: 3,
       projects: [
         {
           id: 1,
-          title: 'LiviShield',
-          description: 'Description coming soon.',
-          technologies: [],
-          icon: 'fas fa-shield-alt',
-          github: '',
-          live: ''
+          title: 'Fraud Lens',
+          icon: 'fas fa-search',
+          github: 'https://github.com/vibhooshana',
+          live: '',
+          technologies: ['React', 'Node.js', 'Express', 'Python', 'FastAPI', 'MySQL', 'MongoDB', 'FAISS', 'Docker'],
+          bullets: [
+            'Built a full-stack AI platform that detects plagiarism and research fraud via TF-IDF cosine similarity, sentence-transformers, and LLM-based summarization through OpenRouter API, delivering end-to-end document analysis with actionable integrity reports.',
+            'Engineered a RAG-based conversational chatbot leveraging FAISS vector search to semantically retrieve relevant paper chunks and generate grounded, context-aware responses — containerized the full system using Docker for consistent cross-environment deployment.'
+          ]
         },
         {
           id: 2,
-          title: 'FraudLens',
-          description: 'Description coming soon.',
-          technologies: [],
-          icon: 'fas fa-search',
-          github: '',
-          live: ''
-        },
-        {
-          id: 3,
-          title: 'Med ParaSearch',
-          description: 'Description coming soon.',
-          technologies: [],
-          icon: 'fas fa-heartbeat',
-          github: '',
-          live: ''
-        },
-        {
-          id: 4,
-          title: 'My Portfolio',
-          description: 'Description coming soon.',
-          technologies: [],
-          icon: 'fas fa-user',
-          github: '',
-          live: ''
+          title: 'Livi Shield',
+          icon: 'fas fa-shield-alt',
+          github: 'https://github.com/vibhooshana',
+          live: '',
+          technologies: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
+          bullets: [
+            'Engineered a full-stack car and health insurance platform supporting 20+ policy types, enabling end-to-end digital policy management including purchase, renewal, and claims submission workflows.',
+            'Designed and implemented a streamlined claims processing pipeline with real-time status tracking and policy dashboard, reducing claims handling complexity and improving user experience across the insurance lifecycle.'
+          ]
         }
       ]
-    }
-  },
-  computed: {
-    totalPages() {
-      return Math.ceil(this.projects.length / this.perPage)
-    },
-    paginatedProjects() {
-      const start = (this.currentPage - 1) * this.perPage
-      return this.projects.slice(start, start + this.perPage)
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.projects { padding-top: 80px; }
+.projects { padding-top: 20px; }
 
 /* ── Hero ── */
 .projects-hero {
-  min-height: 35vh;
+  min-height: 20vh;
   display: flex;
-  align-items: flex-start;
-  padding: 10px 0 0;
+  align-items: center;
+  padding: 20px 0 40px;
 }
 
 .hero-grid {
@@ -147,7 +138,7 @@ export default {
 .hero-left { animation: fadeInLeft 0.8s ease-out; }
 
 .page-title {
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 14px;
@@ -155,10 +146,11 @@ export default {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .page-description {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.65;
   color: var(--text-secondary);
   margin-bottom: 12px;
@@ -185,19 +177,20 @@ export default {
   box-shadow: 0 0 0 12px rgba(99, 102, 241, 0.1), 0 16px 40px rgba(99, 102, 241, 0.3);
 }
 
-/* ── Grid ── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+/* ── Projects List ── */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 80px;
 }
 
 /* ── Card ── */
 .project-card {
   background: var(--bg-card);
-  border-radius: 16px;
+  border-radius: 18px;
   border: 1px solid var(--border-color);
-  overflow: hidden;
+  padding: 28px 32px;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 
@@ -207,65 +200,66 @@ export default {
     top: 0; left: 0; right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--primary), #8B5CF6, var(--accent));
-    border-radius: 16px 16px 0 0;
+    border-radius: 18px 18px 0 0;
   }
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.18);
-
-    .project-icon { transform: scale(1.08); }
+    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.15);
   }
 }
 
-.project-content { padding: 20px; }
-
-.project-header {
+/* Top row: icon + title + links */
+.card-top {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 12px;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-.project-icon {
-  width: 46px;
-  height: 46px;
+.card-icon {
+  width: 48px;
+  height: 48px;
   border-radius: 12px;
   background: linear-gradient(135deg, var(--primary), #8B5CF6);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   flex-shrink: 0;
   box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
-  transition: transform 0.3s ease;
 }
 
-.project-title-group { flex: 1; }
+.card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  flex: 1;
+}
 
 .project-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 6px;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 /* Link buttons */
 .project-links {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .link-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 10px;
+  gap: 5px;
+  padding: 4px 14px;
   border-radius: 20px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s;
@@ -274,7 +268,7 @@ export default {
 }
 
 .github-btn {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-secondary);
 }
@@ -285,86 +279,85 @@ export default {
   color: var(--primary-light);
 }
 
-.project-description {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 16px;
+/* Bullet points */
+.project-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+
+    &::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.75rem;
+      top: 3px;
+    }
+  }
 }
 
 /* Tech chips */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 7px;
 }
 
 .tech-chip {
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.22);
   color: var(--primary-light);
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   transition: background 0.2s;
 
   &:hover { background: rgba(99, 102, 241, 0.2); }
 }
 
-/* ── Pagination ── */
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 40px;
+/* ── Animations ── */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
-.page-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-
-  &:hover:not(:disabled) {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: white;
-    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-  }
-
-  &:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
-.page-info {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  min-width: 40px;
-  text-align: center;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
 }
 
 /* ── Responsive ── */
 @media (max-width: 968px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-  .projects-visual { width: 90px; height: 90px; font-size: 34px; margin: 0 auto; }
-  .projects-grid { grid-template-columns: 1fr; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  .projects-visual {
+    width: 90px;
+    height: 90px;
+    font-size: 34px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 640px) {
+  .project-card { padding: 20px; }
   .page-title { font-size: 1.8rem; }
-  .project-banner { height: 120px; font-size: 40px; }
+  .card-meta { flex-direction: column; gap: 8px; }
 }
 </style>
