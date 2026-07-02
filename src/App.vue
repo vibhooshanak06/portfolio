@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{ 'dark-theme': isDarkMode }">
+  <div id="app" :class="{ 'light-theme': !isDarkMode }">
     <Navbar @toggle-theme="toggleTheme" :isDarkMode="isDarkMode" />
     <main class="main-content">
       <!-- All sections on one page -->
@@ -61,11 +61,17 @@ export default {
   mounted() {
     const savedTheme = localStorage.getItem('theme')
     this.isDarkMode = savedTheme ? savedTheme === 'dark' : true
+    this.applyTheme()
   },
   methods: {
     toggleTheme() {
       this.isDarkMode = !this.isDarkMode
       localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light')
+      this.applyTheme()
+    },
+    applyTheme() {
+      // Sync body background so no flash on scroll edges
+      document.body.style.background = this.isDarkMode ? '#0A0A0F' : '#F8F9FF'
     }
   }
 }

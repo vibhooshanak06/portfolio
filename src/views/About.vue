@@ -19,7 +19,9 @@
         I continuously learn and experiment with new technologies. I focus on building 
         practical, user-friendly solutions that are not just functional, but meaningful.
       </p>
-
+      <p class="page-description">
+      I also have exposure to a wide range of AI tools and actively leverage them to accelerate development, automate repetitive tasks, improve productivity, and enhance the overall quality of my work. I enjoy adapting to emerging technologies and incorporating them into my workflow to build smarter and more efficient solutions.
+  </p>
       <p class="page-description">
         Along with technical skills, I bring adaptability, leadership experience, and a 
         collaborative mindset. Whether working independently or in a team, I aim to 
@@ -462,7 +464,7 @@ export default {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -475,8 +477,41 @@ export default {
     margin: 0 auto;
   }
 
+  .orbit-ring {
+    width: 220px;
+    height: 220px;
+  }
+
   .section-title {
     font-size: 1.6rem;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .orbit-ring {
+    width: 190px;
+    height: 190px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
   }
 }
 </style>

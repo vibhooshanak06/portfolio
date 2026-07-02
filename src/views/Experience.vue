@@ -100,7 +100,10 @@
               <p class="cert-issuer"><i class="fas fa-building"></i> {{ cert.issuer }}</p>
               <div class="cert-footer">
                 <span class="cert-date-chip"><i class="fas fa-calendar-alt"></i> {{ cert.date }}</span>
-                <span class="cert-verified"><i class="fas fa-check-circle"></i> Verified</span>
+                <a v-if="cert.link" :href="cert.link" target="_blank" class="cert-link-btn">
+                  <i class="fas fa-external-link-alt"></i> View Profile
+                </a>
+                <span v-else class="cert-verified"><i class="fas fa-check-circle"></i> Verified</span>
               </div>
             </div>
           </div>
@@ -170,7 +173,8 @@ export default {
       ],
       certifications: [
         { id: 1, title: 'Code Forge Series Winner', issuer: 'SDC CIT', date: '2025', icon: 'fas fa-trophy' },
-        { id: 2, title: 'CODEVORTEX Hackathon Recognition', issuer: 'CIT Computing Association', date: '2025', icon: 'fas fa-medal' }
+        { id: 2, title: 'CODEVORTEX Hackathon Recognition', issuer: 'CIT Computing Association', date: '2025', icon: 'fas fa-medal' },
+        { id: 3, title: 'Actively Solving LeetCode Problems', issuer: 'Focusing on DSA', date: 'Ongoing', icon: 'fas fa-code', link: 'https://leetcode.com/u/Vibhooshana_kannan/' }
       ]
     }
   }
@@ -709,6 +713,26 @@ export default {
   border-radius: 20px;
 }
 
+.cert-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.28);
+  color: var(--primary-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.2);
+    transform: translateY(-1px);
+  }
+}
+
 /* ── Responsive ── */
 @media (max-width: 968px) {
   .hero-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
@@ -721,12 +745,20 @@ export default {
   .education-card { flex-direction: column; }
   .education-icon { margin: 0 auto; }
   .education { padding: 30px 18px; }
+  .certifications-grid { grid-template-columns: 1fr; }
+  .timeline-date { white-space: normal; }
 }
 
 @media (max-width: 640px) {
   .page-title { font-size: 1.8rem; }
   .timeline-card { padding: 14px; }
-  .card-header { gap: 10px; }
+  .card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .timeline-date { margin-left: 0; }
   .section-title { font-size: 1.5rem; }
+  .certifications-grid { grid-template-columns: 1fr; }
+  .certification-card { flex-direction: column; align-items: flex-start; }
 }
 </style>

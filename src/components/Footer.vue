@@ -15,23 +15,23 @@
         </div>
         
         <div class="social-links">
-          <a href="#" class="social-link" aria-label="GitHub">
+          <a href="https://github.com/vibhooshanak06" class="social-link" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="#" class="social-link" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/vibhooshana/" class="social-link" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="#" class="social-link" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
+          <a href="https://www.instagram.com/_.vibhooshana.___" class="social-link" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
           </a>
-          <a href="#" class="social-link" aria-label="Dribbble">
-            <i class="fab fa-dribbble"></i>
+         <a href="mailto:vibhooshana.k06@gmail.com" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
           </a>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <p class="copyright">&copy; 2024 Vibhooshana. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Vibhooshana. All rights reserved.</p>
         <div class="footer-meta">
           <span>Built with Vue.js</span>
           <span class="separator">•</span>
@@ -145,6 +145,8 @@ export default {
 .footer-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   font-size: 0.875rem;
   color: var(--text-muted);

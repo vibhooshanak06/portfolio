@@ -27,7 +27,7 @@
           </p>
           
           <div class="hero-actions">
-            <a href="/resume.pdf" target="_blank" class="btn btn-primary">
+            <a href="/Vibhooshana_K_RESUME.pdf" target="_blank" class="btn btn-primary">
               <span>View My Resume</span>
               <i class="fas fa-download"></i>
             </a>
@@ -70,7 +70,7 @@ export default {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 100px 0 50px;
+  padding: clamp(80px, 12vh, 132px) 0 50px;
 }
 
 .hero-bg-gradient {
@@ -332,7 +332,7 @@ export default {
     padding: 80px 0 40px;
     min-height: auto;
   }
-  
+
   .section {
     padding: 40px 0;
   }

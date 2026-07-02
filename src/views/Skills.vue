@@ -101,7 +101,7 @@ export default {
         },
         {
           label: "Frameworks",
-          items: ["React.js", "Vue.js", "Node.js", "Express.js", "NestJS", "FastAPI"],
+          items: ["React.js", "Vue.js", "Node.js", "NestJS", "FastAPI"],
         },
         {
           label: "Databases",
@@ -109,11 +109,11 @@ export default {
         },
         {
           label: "Tools",
-          items: ["Git & Github", "Docker", "Jenkins", "Postman", "VS Code","Kiro - AI AGENT"],
+          items: ["Git & Github", "Jenkins", "Postman", "VS Code","Kiro - AI AGENT"],
         },
         {
           label: "Soft Skills",
-          items: ["Leadership", "Team Collaboration", "Adaptability",],
+          items: ["Leadership", "Team Collaboration", "Adaptability", "Time management"],
         },
       ],
     };
@@ -381,16 +381,9 @@ export default {
   from { transform: rotate(0deg); }
   to   { transform: rotate(-360deg); }
 }
-
-/* ── Responsive ── */
 @media (max-width: 1024px) {
   .hero-grid { gap: 50px; }
-  .orbital-container { width: 420px; height: 420px; }
-
-  @keyframes orbit {
-    from { transform: rotate(0deg)   translateX(180px); }
-    to   { transform: rotate(360deg) translateX(180px); }
-  }
+  .orbital-container { width: 380px; height: 380px; }
 }
 
 @media (max-width: 768px) {
@@ -399,6 +392,17 @@ export default {
     gap: 40px;
     text-align: center;
   }
+
+  .orbital-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orbital-center { width: 80px; height: 80px; }
+  .center-icon { font-size: 28px; }
+  .pulse-ring { width: 80px; height: 80px; }
+  .orbital-item { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
+  .orbital-icon { width: 52px; height: 52px; font-size: 20px; }
 
   .stack-group {
     flex-direction: column;
@@ -413,18 +417,14 @@ export default {
 
 @media (max-width: 640px) {
   .orbital-container {
-    width: 100%;
-    max-width: 320px;
-    height: 320px;
+    width: 260px;
+    height: 260px;
   }
-  .orbital-center { width: 90px; height: 90px; }
-  .center-icon { font-size: 32px; }
-  .orbital-item { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
-  .orbital-icon { width: 56px; height: 56px; font-size: 20px; }
 
-  @keyframes orbit {
-    from { transform: rotate(0deg)   translateX(130px); }
-    to   { transform: rotate(360deg) translateX(130px); }
-  }
+  .orbital-center { width: 70px; height: 70px; }
+  .center-icon { font-size: 26px; }
+  .pulse-ring { width: 70px; height: 70px; }
+  .orbital-item { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+  .orbital-icon { width: 46px; height: 46px; font-size: 17px; }
 }
 </style>

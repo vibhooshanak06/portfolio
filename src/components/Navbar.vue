@@ -102,14 +102,14 @@ export default {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 15, 0.8);
+  background: rgba(var(--navbar-bg), 0.85);
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border-color);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   &.scrolled {
-    background: rgba(10, 10, 15, 0.95);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    background: rgba(var(--navbar-bg), 0.97);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -269,7 +269,7 @@ export default {
     top: 76px;
     left: 0;
     right: 0;
-    background: rgba(10, 10, 15, 0.98);
+    background: var(--bg-primary);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 24px;
