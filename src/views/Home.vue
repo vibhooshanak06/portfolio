@@ -27,7 +27,7 @@
           </p>
           
           <div class="hero-actions">
-            <a href="/Vibhooshana_K_RESUME.pdf" target="_blank" class="btn btn-primary">
+            <a href="/Vibhooshana-resume.pdf" target="_blank" class="btn btn-primary">
               <span>View My Resume</span>
               <i class="fas fa-download"></i>
             </a>
